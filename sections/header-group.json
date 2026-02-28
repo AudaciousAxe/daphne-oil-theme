@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "En-tête",
@@ -5,16 +14,44 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "item1": { "type": "announcement", "settings": { "text": "Livraison gratuite dès 99€ d'achat", "icon": "shipping" } },
-        "item2": { "type": "announcement", "settings": { "text": "Bio certifiée Certisys", "icon": "leaf" } },
-        "item3": { "type": "announcement", "settings": { "text": "Expédition 24-48h", "icon": "clock" } }
+        "item1": {
+          "type": "announcement",
+          "settings": {
+            "text": "Livraison gratuite dès 99€ d'achat",
+            "icon": "shipping"
+          }
+        },
+        "item2": {
+          "type": "announcement",
+          "settings": {
+            "text": "Bio certifiée Certisys",
+            "icon": "leaf"
+          }
+        },
+        "item3": {
+          "type": "announcement",
+          "settings": {
+            "text": "Expédition 24-48h",
+            "icon": "clock"
+          }
+        }
       },
-      "block_order": ["item1", "item2", "item3"]
+      "block_order": [
+        "item1",
+        "item2",
+        "item3"
+      ],
+      "settings": {}
     },
     "header": {
       "type": "header",
-      "settings": { "menu": "main-menu" }
+      "settings": {
+        "menu": "main-menu"
+      }
     }
   },
-  "order": ["announcement-bar", "header"]
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
 }

@@ -12,10 +12,10 @@
   {%- elsif product.type != blank -%}
     <p class="product-card-meta">{{ product.type }}</p>
   {%- endif -%}
-  <p class="product-card-price">
+  <span class="product-card-price">
     {{ product.price | money }}
     {%- if product.compare_at_price > product.price -%}
       <s>{{ product.compare_at_price | money }}</s>
     {%- endif -%}
-  </p>
+  </span>
 </a>

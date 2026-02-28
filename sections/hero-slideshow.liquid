@@ -3,12 +3,12 @@
     <div class="hero-slide{% if forloop.first %} active{% endif %}" data-slide="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
       <div class="hero-slide-bg">
         {%- if block.settings.image != blank -%}
-          <img src="{{ block.settings.image | image_url: width: 2000 }}" alt="{{ block.settings.heading | escape }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
+          <img src="{{ block.settings.image | image_url: width: 2000 }}" alt="{{ block.settings.heading | strip_html | escape }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
         {%- else -%}
-          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          <div class="hero-slide-placeholder" style="width:100%;height:100%"></div>
         {%- endif -%}
       </div>
-      <div class="hero-slide-overlay" style="background: {{ block.settings.overlay_gradient | default: 'linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)' }};"></div>
+      <div class="hero-slide-overlay" style="background: linear-gradient(to right, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.4) 50%, transparent 100%), linear-gradient(to top, var(--color-bg) 0%, transparent 30%);"></div>
       <div class="hero-slide-content">
         {%- if block.settings.subtitle != blank -%}
           <p class="hero-tag">{{ block.settings.subtitle }}</p>
@@ -21,10 +21,10 @@
         {%- endif -%}
         <div class="hero-btns">
           {%- if block.settings.button_label_1 != blank -%}
-            <a href="{{ block.settings.button_link_1 }}" class="btn btn--primary">{{ block.settings.button_label_1 }}</a>
+            <a href="{{ block.settings.button_link_1 | default: '#' }}" class="btn btn--primary">{{ block.settings.button_label_1 }}</a>
           {%- endif -%}
           {%- if block.settings.button_label_2 != blank -%}
-            <a href="{{ block.settings.button_link_2 }}" class="btn btn--secondary">{{ block.settings.button_label_2 }}</a>
+            <a href="{{ block.settings.button_link_2 | default: '#' }}" class="btn btn--secondary">{{ block.settings.button_label_2 }}</a>
           {%- endif -%}
         </div>
       </div>
@@ -44,6 +44,8 @@
       {%- endfor -%}
     </div>
   {%- endif -%}
+
+  <div class="hero-scroll"><div class="scroll-line"></div></div>
 
   {%- if section.settings.show_floating_products -%}
     <div class="hero-floating-product">
@@ -149,13 +151,6 @@
           "type": "url",
           "id": "button_link_2",
           "label": "Bouton 2 — Lien"
-        },
-        {
-          "type": "text",
-          "id": "overlay_gradient",
-          "label": "Gradient overlay (CSS)",
-          "default": "linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)",
-          "info": "Personnaliser l'overlay du fond"
         }
       ]
     }

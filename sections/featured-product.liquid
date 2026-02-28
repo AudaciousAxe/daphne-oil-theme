@@ -14,7 +14,7 @@
       {%- endif -%}
       <h2>{{ section.settings.custom_title | default: product.title }}</h2>
       {%- if section.settings.meta != blank -%}
-        <p class="product-info-meta" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:12px;">{{ section.settings.meta }}</p>
+        <p class="product-info-meta">{{ section.settings.meta }}</p>
       {%- endif -%}
       {%- if settings.show_rating and product.metafields.reviews.rating.value != blank -%}
         <div class="product-rating">

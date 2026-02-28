@@ -15,6 +15,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
   }
 
+  /* Header scroll behavior — add .scrolled class on scroll */
+  const header = document.querySelector('.site-header');
+  if (header) {
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const cs = window.pageYOffset;
+      /* Add scrolled class when past 50px */
+      header.classList.toggle('scrolled', cs > 50);
+      /* Hide header on scroll down, show on scroll up */
+      if (cs > lastScroll && cs > 200) {
+        header.style.transform = 'translateY(-100%)';
+      } else {
+        header.style.transform = 'translateY(0)';
+      }
+      lastScroll = cs;
+    }, { passive: true });
+  }
+
   /* Hero Slideshow */
   const slideshow = document.querySelector('.hero-slideshow');
   if (slideshow) {
@@ -87,21 +105,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const u = new URL(window.location.href); u.searchParams.set('sort_by', sortSel.value); window.location.href = u.toString();
   });
 
-  /* Fade-in Animation */
+  /* Fade-in Animation on scroll */
   const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; obs.unobserve(e.target); } });
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        obs.unobserve(e.target);
+      }
+    });
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-  document.querySelectorAll('.usp-item, .product-card, .about-section, .about-stat, .terroir-content, .featured-product-inner').forEach(el => {
-    el.style.opacity='0'; el.style.transform='translateY(20px)'; el.style.transition='opacity 0.6s ease, transform 0.6s ease'; obs.observe(el);
-  });
 
-  /* Header hide/show on scroll */
-  let lastScroll = 0;
-  const header = document.querySelector('.site-header');
-  if (header) window.addEventListener('scroll', () => {
-    const cs = window.pageYOffset;
-    header.style.transform = (cs > lastScroll && cs > 100) ? 'translateY(-100%)' : 'translateY(0)';
-    lastScroll = cs;
-  }, { passive: true });
+  document.querySelectorAll('.usp-item, .about-section, .about-image, .about-content, .about-stat, .terroir-content, .featured-product-inner').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    obs.observe(el);
+  });
 
 });

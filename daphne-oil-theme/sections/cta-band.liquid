@@ -1,0 +1,52 @@
+<section class="cta-band" data-section-id="{{ section.id }}">
+  {%- if section.settings.subtitle != blank -%}
+    <p class="about-tag">{{ section.settings.subtitle }}</p>
+  {%- endif -%}
+  {%- if section.settings.title != blank -%}
+    <h2>{{ section.settings.title }}</h2>
+  {%- endif -%}
+  {%- if section.settings.text != blank -%}
+    <p>{{ section.settings.text }}</p>
+  {%- endif -%}
+  {%- if section.settings.button_label != blank -%}
+    <a href="{{ section.settings.button_link }}" class="btn">{{ section.settings.button_label }}</a>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Bandeau CTA",
+  "class": "cta-band-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "default": "Nos produits sont aussi en magasin bio",
+      "label": "Sous-titre"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "default": "<p>Trouvez un point de vente<br><em>proche de chez vous</em></p>",
+      "label": "Titre"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Texte (optionnel)"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Trouver un point de vente",
+      "label": "Texte du bouton"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien du bouton"
+    }
+  ],
+  "presets": [{ "name": "Bandeau CTA" }]
+}
+{% endschema %}

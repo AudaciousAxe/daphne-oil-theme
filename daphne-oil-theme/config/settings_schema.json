@@ -1,0 +1,179 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Daphne Luxe Noir",
+    "theme_version": "1.0.0",
+    "theme_author": "Novaia Marketing",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Logo & Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 20,
+        "max": 200,
+        "step": 5,
+        "default": 36,
+        "unit": "px",
+        "label": "Largeur du logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      }
+    ]
+  },
+  {
+    "name": "Couleurs",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_bg",
+        "default": "#0a0a0a",
+        "label": "Fond principal"
+      },
+      {
+        "type": "color",
+        "id": "color_bg_secondary",
+        "default": "#111111",
+        "label": "Fond secondaire"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "default": "#f5f0e8",
+        "label": "Texte principal"
+      },
+      {
+        "type": "color",
+        "id": "color_text_secondary",
+        "default": "#999999",
+        "label": "Texte secondaire"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "default": "#8b9a3a",
+        "label": "Couleur accent (olive)"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_light",
+        "default": "#a8b84d",
+        "label": "Accent clair"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_bg",
+        "default": "#1a1f0e",
+        "label": "Fond accent"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "default": "#222222",
+        "label": "Bordures"
+      }
+    ]
+  },
+  {
+    "name": "Typographie",
+    "settings": [
+      {
+        "type": "text",
+        "id": "font_heading",
+        "default": "Cormorant Garamond",
+        "label": "Police des titres"
+      },
+      {
+        "type": "text",
+        "id": "font_body",
+        "default": "Outfit",
+        "label": "Police du corps"
+      }
+    ]
+  },
+  {
+    "name": "Réseaux sociaux",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "URL Facebook"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "URL Instagram"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter",
+        "label": "URL Twitter / X"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube",
+        "label": "URL YouTube"
+      }
+    ]
+  },
+  {
+    "name": "Panier",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "options": [
+          { "value": "page", "label": "Page panier" },
+          { "value": "drawer", "label": "Tiroir latéral" }
+        ],
+        "default": "drawer",
+        "label": "Type de panier"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_notes_enable",
+        "default": true,
+        "label": "Activer les notes de commande"
+      }
+    ]
+  },
+  {
+    "name": "Produits",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "default": false,
+        "label": "Afficher le vendeur"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_rating",
+        "default": true,
+        "label": "Afficher les étoiles"
+      },
+      {
+        "type": "select",
+        "id": "product_image_ratio",
+        "options": [
+          { "value": "natural", "label": "Naturel" },
+          { "value": "square", "label": "Carré" },
+          { "value": "portrait", "label": "Portrait" }
+        ],
+        "default": "natural",
+        "label": "Ratio d'image produit"
+      }
+    ]
+  }
+]

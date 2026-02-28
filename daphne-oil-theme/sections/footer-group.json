@@ -1,0 +1,19 @@
+{
+  "type": "footer",
+  "name": "Pied de page",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "footer_text": "Huile d'olive bio extra vierge certifiée Certisys, cultivée à Kalamata depuis 1854."
+      },
+      "blocks": {
+        "col1": { "type": "menu", "settings": { "title": "Boutique" } },
+        "col2": { "type": "menu", "settings": { "title": "Daphne" } },
+        "col3": { "type": "menu", "settings": { "title": "Aide" } }
+      },
+      "block_order": ["col1", "col2", "col3"]
+    }
+  },
+  "order": ["footer"]
+}

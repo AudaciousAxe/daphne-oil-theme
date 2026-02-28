@@ -1,0 +1,39 @@
+<div class="article-page">
+  <p class="about-tag" style="margin-bottom:16px;"><a href="{{ blog.url }}">← {{ blog.title }}</a></p>
+  <h1>{{ article.title }}</h1>
+  <p class="article-meta">{{ article.published_at | date: '%d %B %Y' }} · {{ article.author }}</p>
+  {%- if article.image -%}
+    <div class="article-featured-image"><img src="{{ article.image | image_url: width: 1200 }}" alt="{{ article.title | escape }}"></div>
+  {%- endif -%}
+  <div class="rte">{{ article.content }}</div>
+  {%- if blog.comments_enabled? -%}
+    <div style="margin-top:60px;border-top:1px solid var(--color-border);padding-top:40px;">
+      <h2 style="font-size:24px;margin-bottom:24px;">{{ article.comments_count }} Commentaire{%- if article.comments_count > 1 -%}s{%- endif -%}</h2>
+      {%- for comment in article.comments -%}
+        <div style="padding:16px 0;border-bottom:1px solid var(--color-border);">
+          <p style="font-weight:600;margin-bottom:4px;">{{ comment.author }}</p>
+          <p style="font-size:12px;color:var(--color-text-secondary);margin-bottom:8px;">{{ comment.created_at | date: '%d %B %Y' }}</p>
+          <div class="rte">{{ comment.content }}</div>
+        </div>
+      {%- endfor -%}
+      {% form 'new_comment', article %}
+        <div style="margin-top:32px;">
+          <h3 style="font-size:18px;margin-bottom:16px;">Laisser un commentaire</h3>
+          <div class="customer-form">
+            <label for="comment-author">Nom</label>
+            <input type="text" id="comment-author" name="comment[author]" required>
+            <label for="comment-email">Email</label>
+            <input type="email" id="comment-email" name="comment[email]" required>
+            <label for="comment-body">Commentaire</label>
+            <textarea id="comment-body" name="comment[body]" rows="5" required style="width:100%;padding:14px;background:var(--color-bg-secondary);border:1px solid var(--color-border);color:var(--color-text);font-family:var(--font-body);resize:vertical;"></textarea>
+            <button type="submit" class="btn btn--primary" style="margin-top:16px;">Envoyer</button>
+          </div>
+        </div>
+      {% endform %}
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{ "name": "Page article", "settings": [] }
+{% endschema %}

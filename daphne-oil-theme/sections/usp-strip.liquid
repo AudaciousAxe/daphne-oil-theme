@@ -1,0 +1,80 @@
+<section class="usp-strip" data-section-id="{{ section.id }}">
+  {%- for block in section.blocks -%}
+    <div class="usp-item" {{ block.shopify_attributes }}>
+      <div class="usp-icon">
+        {%- case block.settings.icon -%}
+          {%- when 'droplet' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+          {%- when 'heart' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          {%- when 'utensils' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 00-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
+          {%- when 'shield' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          {%- when 'leaf' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66L12 14"/><path d="M2 2s7.83 1 11.24 4.41C16.65 9.82 17 14 17 14"/></svg>
+          {%- when 'award' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+          {%- else -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/></svg>
+        {%- endcase -%}
+      </div>
+      <h4>{{ block.settings.title }}</h4>
+      <p>{{ block.settings.text }}</p>
+    </div>
+  {%- endfor -%}
+</section>
+
+{% schema %}
+{
+  "name": "Bandeau USP",
+  "class": "usp-section",
+  "max_blocks": 4,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "usp",
+      "name": "Avantage",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icône",
+          "options": [
+            { "value": "droplet", "label": "Goutte (Extra vierge)" },
+            { "value": "heart", "label": "Cœur (Santé)" },
+            { "value": "utensils", "label": "Couverts (Gastronomie)" },
+            { "value": "shield", "label": "Bouclier (Certifié)" },
+            { "value": "leaf", "label": "Feuille (Bio)" },
+            { "value": "award", "label": "Médaille" }
+          ],
+          "default": "droplet"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Extra Vierge",
+          "label": "Titre"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "default": "Un jus de fruit nutritif pour la cuisine quotidienne.",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bandeau USP",
+      "blocks": [
+        { "type": "usp", "settings": { "icon": "droplet", "title": "Extra Vierge", "text": "Un jus de fruit nutritif et délicat, idéal pour la cuisine quotidienne comme pour les grandes occasions." } },
+        { "type": "usp", "settings": { "icon": "heart", "title": "Santé & Bien-être", "text": "Des études démontrent les bienfaits d'une consommation quotidienne pour la santé cardio-vasculaire." } },
+        { "type": "usp", "settings": { "icon": "utensils", "title": "Gastronomie", "text": "Rehaussez vos salades, poissons et viandes avec une qualité incomparable." } },
+        { "type": "usp", "settings": { "icon": "shield", "title": "Certifié Bio", "text": "Contrôlée qualitativement depuis la récolte jusqu'au conditionnement, certifiée Certisys." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

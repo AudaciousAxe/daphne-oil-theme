@@ -1,0 +1,50 @@
+<div class="cart-page">
+  <h1>{{ 'cart.title' | t }}</h1>
+  {%- if cart.item_count > 0 -%}
+    <form action="/cart" method="post">
+      <table class="cart-table">
+        <thead><tr><th>Produit</th><th>Prix</th><th>Quantité</th><th>Total</th></tr></thead>
+        <tbody>
+          {%- for item in cart.items -%}
+            <tr>
+              <td>
+                <div class="cart-item-info">
+                  <div class="cart-item-image"><a href="{{ item.url }}"><img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}"></a></div>
+                  <div><p class="cart-item-title"><a href="{{ item.url }}">{{ item.product.title }}</a></p>
+                  {%- unless item.product.has_only_default_variant -%}<p class="cart-item-variant">{{ item.variant.title }}</p>{%- endunless -%}
+                  <a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cart-item-remove">Supprimer</a></div>
+                </div>
+              </td>
+              <td class="cart-item-price">{{ item.price | money }}</td>
+              <td>
+                <div class="quantity-selector">
+                  <button type="button" onclick="this.nextElementSibling.stepDown();this.closest('form').submit()">−</button>
+                  <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" aria-label="Quantité">
+                  <button type="button" onclick="this.previousElementSibling.stepUp();this.closest('form').submit()">+</button>
+                </div>
+              </td>
+              <td class="cart-item-price">{{ item.final_line_price | money }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+      <div class="cart-footer">
+        <div class="cart-summary">
+          <div class="cart-subtotal"><span>Sous-total</span><span>{{ cart.total_price | money }}</span></div>
+          <p class="cart-note">Taxes et frais de livraison calculés à l'étape suivante.</p>
+          <button type="submit" name="checkout" class="cart-checkout-btn">Passer la commande</button>
+          <a href="/collections/all" class="cart-continue">Continuer mes achats</a>
+        </div>
+      </div>
+    </form>
+  {%- else -%}
+    <div class="cart-empty">
+      <p>Votre panier est vide.</p>
+      <a href="/collections/all" class="btn btn--primary">Découvrir nos produits</a>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{ "name": "Page panier", "settings": [] }
+{% endschema %}

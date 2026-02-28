@@ -1,0 +1,201 @@
+<section class="hero-slideshow" data-section-id="{{ section.id }}" data-autoplay="{{ section.settings.autoplay }}" data-interval="{{ section.settings.interval }}">
+  {%- for block in section.blocks -%}
+    <div class="hero-slide{% if forloop.first %} active{% endif %}" data-slide="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+      <div class="hero-slide-bg">
+        {%- if block.settings.image != blank -%}
+          <img src="{{ block.settings.image | image_url: width: 2000 }}" alt="{{ block.settings.heading | escape }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
+        {%- else -%}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+      <div class="hero-slide-overlay" style="background: {{ block.settings.overlay_gradient | default: 'linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)' }};"></div>
+      <div class="hero-slide-content">
+        {%- if block.settings.subtitle != blank -%}
+          <p class="hero-tag">{{ block.settings.subtitle }}</p>
+        {%- endif -%}
+        {%- if block.settings.heading != blank -%}
+          <h1 class="hero-title">{{ block.settings.heading }}</h1>
+        {%- endif -%}
+        {%- if block.settings.text != blank -%}
+          <p class="hero-desc">{{ block.settings.text }}</p>
+        {%- endif -%}
+        <div class="hero-btns">
+          {%- if block.settings.button_label_1 != blank -%}
+            <a href="{{ block.settings.button_link_1 }}" class="btn btn--primary">{{ block.settings.button_label_1 }}</a>
+          {%- endif -%}
+          {%- if block.settings.button_label_2 != blank -%}
+            <a href="{{ block.settings.button_link_2 }}" class="btn btn--secondary">{{ block.settings.button_label_2 }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {%- endfor -%}
+
+  {%- if section.blocks.size > 1 -%}
+    <button class="hero-arrow hero-arrow--prev" aria-label="Précédent">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="hero-arrow hero-arrow--next" aria-label="Suivant">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="hero-dots">
+      {%- for block in section.blocks -%}
+        <button class="hero-dot{% if forloop.first %} active{% endif %}" data-slide="{{ forloop.index0 }}" aria-label="Slide {{ forloop.index }}"></button>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  {%- if section.settings.show_floating_products -%}
+    <div class="hero-floating-product">
+      {%- for i in (1..2) -%}
+        {%- assign prod_setting = 'floating_product_' | append: i -%}
+        {%- assign floating_product = section.settings[prod_setting] -%}
+        {%- if floating_product != blank -%}
+          <a href="{{ floating_product.url }}" class="hero-floating-card">
+            <img src="{{ floating_product.featured_image | image_url: width: 300 }}" alt="{{ floating_product.title | escape }}">
+            <p>{{ floating_product.title }}</p>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Hero Slideshow",
+  "class": "hero-section",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "default": true,
+      "label": "Lecture automatique"
+    },
+    {
+      "type": "range",
+      "id": "interval",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "default": 6,
+      "unit": "s",
+      "label": "Intervalle entre les slides"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_floating_products",
+      "default": true,
+      "label": "Afficher les produits flottants"
+    },
+    {
+      "type": "product",
+      "id": "floating_product_1",
+      "label": "Produit flottant 1"
+    },
+    {
+      "type": "product",
+      "id": "floating_product_2",
+      "label": "Produit flottant 2"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image de fond"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "default": "Originaire de Kalamata",
+          "label": "Sous-titre"
+        },
+        {
+          "type": "richtext",
+          "id": "heading",
+          "default": "<p>L'huile d'olive bio<br><em>d'exception</em></p>",
+          "label": "Titre (utilisez <em> pour l'italique olive)"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "default": "Depuis 1854, la famille Daphne cultive la variété Koroneiki sur les collines ensoleillées de Kalamata.",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "button_label_1",
+          "default": "Découvrir nos produits",
+          "label": "Bouton 1 — Texte"
+        },
+        {
+          "type": "url",
+          "id": "button_link_1",
+          "label": "Bouton 1 — Lien"
+        },
+        {
+          "type": "text",
+          "id": "button_label_2",
+          "default": "Notre histoire",
+          "label": "Bouton 2 — Texte"
+        },
+        {
+          "type": "url",
+          "id": "button_link_2",
+          "label": "Bouton 2 — Lien"
+        },
+        {
+          "type": "text",
+          "id": "overlay_gradient",
+          "label": "Gradient overlay (CSS)",
+          "default": "linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)",
+          "info": "Personnaliser l'overlay du fond"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Slideshow",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "subtitle": "Originaire de Kalamata",
+            "heading": "<p>L'huile d'olive bio<br><em>d'exception<\/em></p>",
+            "text": "Depuis 1854, la famille Daphne cultive la variété Koroneiki sur les collines ensoleillées de Kalamata.",
+            "button_label_1": "Découvrir nos produits",
+            "button_label_2": "Notre histoire"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "subtitle": "Certifiée Certisys",
+            "heading": "<p>Une huile extra vierge<br><em>biologique</em></p>",
+            "text": "Extraction à froid, première pression. Nos olives Koroneiki sont récoltées à la main chaque automne.",
+            "button_label_1": "Nos certifications",
+            "button_label_2": ""
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "subtitle": "Le Péloponnèse",
+            "heading": "<p>Le terroir grec<br><em>au cœur de nos huiles</em></p>",
+            "text": "Sur les collines de Kalamata, entre Asprochorion et Laïka, nos oliviers centenaires produisent une huile d'exception.",
+            "button_label_1": "Découvrir le terroir",
+            "button_label_2": ""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

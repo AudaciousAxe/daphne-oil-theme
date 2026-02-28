@@ -1,0 +1,227 @@
+{%- assign product = product -%}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+<div class="product-page">
+  <nav class="product-breadcrumb" aria-label="Fil d'ariane">
+    <a href="/">Accueil</a>
+    <span>/</span>
+    {%- if collection -%}
+      <a href="{{ collection.url }}">{{ collection.title }}</a>
+      <span>/</span>
+    {%- else -%}
+      <a href="/collections/all">Produits</a>
+      <span>/</span>
+    {%- endif -%}
+    <span>{{ product.title }}</span>
+  </nav>
+
+  <div class="product-layout">
+    <!-- GALLERY -->
+    <div class="product-gallery">
+      <div class="product-gallery-main" id="product-main-image">
+        {%- for tag in product.tags -%}
+          {%- if tag == 'best-seller' or tag == 'bestseller' -%}
+            <span class="product-gallery-badge">Best-Seller</span>
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if section.settings.badge != blank -%}
+          <span class="product-gallery-badge">{{ section.settings.badge }}</span>
+        {%- endif -%}
+        {%- if product.featured_image -%}
+          <img src="{{ product.featured_image | image_url: width: 1000 }}" alt="{{ product.title | escape }}" id="product-image-main">
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+      {%- if product.images.size > 1 -%}
+        <div class="product-gallery-thumbs">
+          {%- for image in product.images -%}
+            <div class="product-gallery-thumb{% if forloop.first %} active{% endif %}" data-image-url="{{ image | image_url: width: 1000 }}">
+              <img src="{{ image | image_url: width: 150 }}" alt="{{ product.title | escape }} - Image {{ forloop.index }}">
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <!-- INFO -->
+    <div class="product-info">
+      {%- if section.settings.subtitle != blank -%}
+        <p class="about-tag">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+      <h1>{{ product.title }}</h1>
+      {%- if section.settings.meta != blank -%}
+        <p class="product-info-meta">{{ section.settings.meta }}</p>
+      {%- endif -%}
+      {%- if settings.show_rating and product.metafields.reviews.rating.value != blank -%}
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span>{{ product.metafields.reviews.rating.value }} — {{ product.metafields.reviews.rating_count }} avis</span>
+        </div>
+      {%- endif -%}
+
+      <div class="product-price-main" data-product-price>
+        {{ current_variant.price | money }} <small>TTC</small>
+      </div>
+      {%- if section.settings.unit_price != blank -%}
+        <p class="product-price-unit">{{ section.settings.unit_price }}</p>
+      {%- endif -%}
+      {%- if product.description != blank and section.settings.show_short_desc -%}
+        <div class="product-short-desc">{{ product.description | truncatewords: 40 }}</div>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        {%- assign tag_blocks = section.blocks | where: "type", "tag" -%}
+        {%- if tag_blocks.size > 0 -%}
+          <div class="product-tags">
+            {%- for block in tag_blocks -%}
+              <span class="product-tag" {{ block.shopify_attributes }}>
+                {%- if block.settings.icon == 'leaf' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;color:var(--color-accent)"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66L12 14"/><path d="M2 2s7.83 1 11.24 4.41C16.65 9.82 17 14 17 14"/></svg>{%- endif -%}
+                {%- if block.settings.icon == 'snowflake' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;color:var(--color-accent)"><line x1="12" y1="2" x2="12" y2="22"/><path d="M20 16l-4-4 4-4"/><path d="M4 8l4 4-4 4"/></svg>{%- endif -%}
+                {%- if block.settings.icon == 'award' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;color:var(--color-accent)"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>{%- endif -%}
+                {{ block.settings.label }}
+              </span>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+
+      <!-- Variant Selector -->
+      {%- if product.has_only_default_variant == false -%}
+        {%- for option in product.options_with_values -%}
+          <div class="product-variants">
+            <p class="variant-label">{{ option.name }}</p>
+            <div class="variant-options">
+              {%- for value in option.values -%}
+                <button class="variant-option{% if option.selected_value == value %} active{% endif %}" data-option-index="{{ forloop.parentloop.index0 }}" data-value="{{ value }}">{{ value }}</button>
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+
+      {% form 'product', product %}
+        <input type="hidden" name="id" value="{{ current_variant.id }}" id="product-variant-id">
+
+        <div class="product-quantity">
+          <div class="quantity-selector">
+            <button type="button" class="qty-minus" aria-label="Diminuer">−</button>
+            <input type="number" name="quantity" value="1" min="1" id="product-qty" aria-label="Quantité">
+            <button type="button" class="qty-plus" aria-label="Augmenter">+</button>
+          </div>
+          <button type="submit" class="product-add-btn" style="flex:1;" {% unless current_variant.available %}disabled{% endunless %}>
+            {%- if current_variant.available -%}
+              Ajouter au panier
+            {%- else -%}
+              Épuisé
+            {%- endif -%}
+          </button>
+        </div>
+      {% endform %}
+
+      {%- if section.settings.show_buy_now -%}
+        <a href="/checkout" class="product-buy-btn">Acheter maintenant</a>
+      {%- endif -%}
+
+      <!-- Trust Bar -->
+      <div class="product-trust">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'trust' -%}
+            <div class="product-trust-item" {{ block.shopify_attributes }}>
+              {%- if block.settings.icon == 'shipping' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:16px;height:16px"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>{%- endif -%}
+              {%- if block.settings.icon == 'lock' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:16px;height:16px"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>{%- endif -%}
+              {%- if block.settings.icon == 'return' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:16px;height:16px"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>{%- endif -%}
+              {{ block.settings.text }}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <!-- Accordions -->
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'accordion' -%}
+          <div class="product-accordion" {{ block.shopify_attributes }}>
+            <div class="product-accordion-header" role="button" tabindex="0">
+              <span>{{ block.settings.title }}</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+            <div class="product-accordion-body">
+              <div class="product-accordion-content">
+                {%- if block.settings.use_product_description -%}
+                  {{ product.description }}
+                {%- else -%}
+                  {{ block.settings.content }}
+                {%- endif -%}
+                {%- if block.settings.link_label != blank -%}
+                  <p style="margin-top:16px;"><a href="{{ block.settings.link_url }}">{{ block.settings.link_label }}</a></p>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<!-- Recommendations -->
+{%- if section.settings.show_recommendations and recommendations.performed and recommendations.products_count > 0 -%}
+  <div class="product-recommendations">
+    <h2>{{ section.settings.recommendations_title | default: 'Vous aimerez aussi' }}</h2>
+    <div class="products-grid" style="max-width:var(--max-width);margin:0 auto;padding:0 60px;">
+      {%- for product in recommendations.products limit: 4 -%}
+        {% render 'product-card', product: product %}
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Page produit",
+  "settings": [
+    { "type": "text", "id": "subtitle", "default": "Daphne · Kalamata", "label": "Sous-titre (au-dessus du nom)" },
+    { "type": "text", "id": "meta", "default": "Variété Koroneiki · Péloponnèse · Certifiée Certisys", "label": "Méta informations" },
+    { "type": "text", "id": "unit_price", "default": "€25,20 / litre", "label": "Prix unitaire affiché" },
+    { "type": "text", "id": "badge", "label": "Badge (ex: Best-Seller)" },
+    { "type": "checkbox", "id": "show_short_desc", "default": true, "label": "Afficher description courte" },
+    { "type": "checkbox", "id": "show_buy_now", "default": true, "label": "Bouton Acheter maintenant" },
+    { "type": "checkbox", "id": "show_recommendations", "default": true, "label": "Produits recommandés" },
+    { "type": "text", "id": "recommendations_title", "default": "Vous aimerez aussi", "label": "Titre recommandations" }
+  ],
+  "blocks": [
+    {
+      "type": "tag",
+      "name": "Tag produit",
+      "settings": [
+        { "type": "text", "id": "label", "default": "100% Bio", "label": "Texte" },
+        { "type": "select", "id": "icon", "options": [{"value":"none","label":"Aucune"},{"value":"leaf","label":"Bio"},{"value":"snowflake","label":"Extraction à froid"},{"value":"award","label":"Primé"}], "default": "leaf", "label": "Icône" }
+      ]
+    },
+    {
+      "type": "trust",
+      "name": "Élément de confiance",
+      "settings": [
+        { "type": "text", "id": "text", "default": "Livraison gratuite dès 49€", "label": "Texte" },
+        { "type": "select", "id": "icon", "options": [{"value":"shipping","label":"Livraison"},{"value":"lock","label":"Paiement sécurisé"},{"value":"return","label":"Retour"}], "default": "shipping", "label": "Icône" }
+      ]
+    },
+    {
+      "type": "accordion",
+      "name": "Accordéon",
+      "settings": [
+        { "type": "text", "id": "title", "default": "Description", "label": "Titre" },
+        { "type": "richtext", "id": "content", "label": "Contenu" },
+        { "type": "checkbox", "id": "use_product_description", "default": false, "label": "Utiliser la description Shopify" },
+        { "type": "text", "id": "link_label", "label": "Texte du lien (optionnel)" },
+        { "type": "url", "id": "link_url", "label": "URL du lien" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page produit"
+    }
+  ]
+}
+{% endschema %}

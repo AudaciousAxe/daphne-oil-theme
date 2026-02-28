@@ -1,0 +1,28 @@
+<div class="customer-page" style="max-width:900px;">
+  <p class="about-tag"><a href="/account">← Mon compte</a></p>
+  <h1>Commande {{ order.name }}</h1>
+  <p style="color:var(--color-text-secondary);margin-bottom:32px;">Passée le {{ order.created_at | date: '%d/%m/%Y' }} · {{ order.financial_status_label }}</p>
+  <table class="cart-table">
+    <thead><tr><th>Produit</th><th>Prix</th><th>Quantité</th><th>Total</th></tr></thead>
+    <tbody>
+      {%- for line_item in order.line_items -%}
+        <tr>
+          <td>{{ line_item.title }}</td>
+          <td>{{ line_item.price | money }}</td>
+          <td>{{ line_item.quantity }}</td>
+          <td>{{ line_item.final_line_price | money }}</td>
+        </tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
+  <div style="margin-top:32px;text-align:right;">
+    <p><strong>Sous-total :</strong> {{ order.subtotal_price | money }}</p>
+    {%- for shipping_method in order.shipping_methods -%}<p><strong>Livraison ({{ shipping_method.title }}) :</strong> {{ shipping_method.price | money }}</p>{%- endfor -%}
+    <p><strong>Taxes :</strong> {{ order.tax_price | money }}</p>
+    <p style="font-size:20px;margin-top:12px;"><strong>Total : {{ order.total_price | money }}</strong></p>
+  </div>
+</div>
+
+{% schema %}
+{ "name": "Détail commande", "settings": [] }
+{% endschema %}

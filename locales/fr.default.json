@@ -1,0 +1,62 @@
+{
+  "general": {
+    "skip_to_content": "Aller au contenu",
+    "search": "Rechercher",
+    "cart": "Panier",
+    "menu": "Menu"
+  },
+  "cart": {
+    "title": "Votre panier",
+    "empty": "Votre panier est vide",
+    "subtotal": "Sous-total",
+    "checkout": "Passer la commande",
+    "continue": "Continuer mes achats",
+    "remove": "Supprimer",
+    "shipping_note": "Taxes et frais de livraison calculés à l'étape suivante."
+  },
+  "collections": {
+    "title": "Nos collections",
+    "all": "Tous les produits"
+  },
+  "products": {
+    "add_to_cart": "Ajouter au panier",
+    "sold_out": "Épuisé",
+    "buy_now": "Acheter maintenant",
+    "quantity": "Quantité",
+    "description": "Description",
+    "specifications": "Caractéristiques",
+    "shipping": "Livraison & Retours"
+  },
+  "customer": {
+    "login": "Connexion",
+    "register": "Créer un compte",
+    "account": "Mon compte",
+    "orders": "Commandes",
+    "addresses": "Adresses",
+    "logout": "Déconnexion"
+  },
+  "blog": {
+    "read_more": "Lire la suite",
+    "comments": "Commentaires"
+  },
+  "search": {
+    "title": "Recherche",
+    "no_results": "Aucun résultat",
+    "placeholder": "Rechercher..."
+  },
+  "404": {
+    "title": "Page introuvable",
+    "text": "La page que vous recherchez n'existe pas.",
+    "back": "Retour à l'accueil"
+  },
+  "gift_cards": {
+    "issued": {
+      "title": "Carte cadeau",
+      "subtext": "Votre carte cadeau",
+      "expired": "Expirée",
+      "expiration_date": "Expire le {{ expires_on }}",
+      "shop_link": "Visiter la boutique",
+      "print": "Imprimer"
+    }
+  }
+}

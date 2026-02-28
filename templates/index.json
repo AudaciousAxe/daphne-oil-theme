@@ -1,0 +1,109 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-slideshow",
+      "settings": { "autoplay": true, "interval": 6, "show_floating_products": true },
+      "blocks": {
+        "slide1": {
+          "type": "slide",
+          "settings": {
+            "subtitle": "Originaire de Kalamata",
+            "heading": "<p>L'huile d'olive bio<br><em>d'exception<\/em></p>",
+            "text": "Depuis 1854, la famille Daphne cultive la variété Koroneiki sur les collines ensoleillées de Kalamata. Une huile extra vierge biologique, certifiée Certisys.",
+            "button_label_1": "Découvrir nos produits",
+            "button_label_2": "Notre histoire"
+          }
+        },
+        "slide2": {
+          "type": "slide",
+          "settings": {
+            "subtitle": "Certifiée Certisys",
+            "heading": "<p>Une huile extra vierge<br><em>biologique<\/em></p>",
+            "text": "Extraction à froid, première pression. Nos olives Koroneiki sont récoltées à la main chaque automne.",
+            "button_label_1": "Nos certifications",
+            "button_label_2": ""
+          }
+        },
+        "slide3": {
+          "type": "slide",
+          "settings": {
+            "subtitle": "Le Péloponnèse",
+            "heading": "<p>Le terroir grec<br><em>au cœur de nos huiles<\/em></p>",
+            "text": "Sur les collines de Kalamata, entre Asprochorion et Laïka, nos oliviers centenaires produisent une huile d'exception.",
+            "button_label_1": "Découvrir le terroir",
+            "button_label_2": ""
+          }
+        }
+      },
+      "block_order": ["slide1", "slide2", "slide3"]
+    },
+    "usp": {
+      "type": "usp-strip",
+      "blocks": {
+        "usp1": { "type": "usp", "settings": { "icon": "droplet", "title": "Extra Vierge", "text": "Un jus de fruit nutritif et délicat pour la cuisine quotidienne comme pour les grandes occasions." } },
+        "usp2": { "type": "usp", "settings": { "icon": "heart", "title": "Santé & Bien-être", "text": "Des études démontrent les bienfaits d'une consommation quotidienne pour la santé cardio-vasculaire." } },
+        "usp3": { "type": "usp", "settings": { "icon": "utensils", "title": "Gastronomie", "text": "Rehaussez vos salades, poissons et viandes avec une qualité incomparable." } },
+        "usp4": { "type": "usp", "settings": { "icon": "shield", "title": "Certifié Bio", "text": "Contrôlée qualitativement depuis la récolte jusqu'au conditionnement, certifiée Certisys." } }
+      },
+      "block_order": ["usp1", "usp2", "usp3", "usp4"]
+    },
+    "about": {
+      "type": "about",
+      "settings": {
+        "subtitle": "Notre héritage",
+        "title": "<p>Nous créons la meilleure huile d'olive <em>bio<\/em></p>",
+        "text": "<p>Climat, soleil et harmonie forment un équilibre parfait. Sur les collines ensoleillées de Kalamata, nous cultivons la variété Koroneiki pour offrir une huile biologique d'une qualité exceptionnelle.</p>",
+        "text_2": "<p>Notre exploitation familiale, située dans les villages d'Asprochorion et Laïka, perpétue un savoir-faire transmis de génération en génération.</p>"
+      },
+      "blocks": {
+        "stat1": { "type": "stat", "settings": { "value": "1854", "label": "Année de fondation" } },
+        "stat2": { "type": "stat", "settings": { "value": "170+", "label": "Ans d'expérience" } },
+        "stat3": { "type": "stat", "settings": { "value": "100%", "label": "Biologique" } }
+      },
+      "block_order": ["stat1", "stat2", "stat3"]
+    },
+    "featured-product": {
+      "type": "featured-product",
+      "settings": {
+        "subtitle": "Daphne · Kalamata",
+        "badge": "Best-seller",
+        "meta": "Variété Koroneiki · Péloponnèse · Certifiée Certisys",
+        "unit_price": "€25,20 / litre",
+        "description": "<p>Notre huile d'olive extra vierge biologique est un véritable jus de fruit issu de la variété Koroneiki. Cultivée sur les collines ensoleillées de Kalamata, elle offre un goût fruité et délicat.</p>"
+      },
+      "blocks": {
+        "tag1": { "type": "tag", "settings": { "label": "100% Bio", "icon": "leaf" } },
+        "tag2": { "type": "tag", "settings": { "label": "Extraction à froid", "icon": "snowflake" } },
+        "tag3": { "type": "tag", "settings": { "label": "Primée", "icon": "award" } }
+      },
+      "block_order": ["tag1", "tag2", "tag3"]
+    },
+    "products": {
+      "type": "product-grid",
+      "settings": {
+        "subtitle": "Nos produits",
+        "title": "<p>La gamme <em>Daphne<\/em></p>",
+        "products_count": 4,
+        "show_view_all": true
+      }
+    },
+    "terroir": {
+      "type": "terroir",
+      "settings": {
+        "subtitle": "Le terroir",
+        "title": "<p>Le Péloponnèse,<br>berceau de <em>l'olivier<\/em></p>",
+        "text": "Nous sommes une petite exploitation familiale d'huile d'olive extra vierge biologique dans les villages d'Asprochorion et Laïka. Daphne Oil met son expérience et son savoir-faire dans la culture des olives afin de nous offrir des produits d'exception.",
+        "button_label": "Découvrir la culture"
+      }
+    },
+    "cta": {
+      "type": "cta-band",
+      "settings": {
+        "subtitle": "Nos produits sont aussi en magasin bio",
+        "title": "<p>Trouvez un point de vente<br><em>proche de chez vous<\/em></p>",
+        "button_label": "Trouver un point de vente"
+      }
+    }
+  },
+  "order": ["hero", "usp", "about", "featured-product", "products", "terroir", "cta"]
+}

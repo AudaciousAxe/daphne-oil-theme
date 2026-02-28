@@ -1,0 +1,25 @@
+<section class="newsletter-section" data-section-id="{{ section.id }}">
+  {%- if section.settings.title != blank -%}
+    <h2>{{ section.settings.title }}</h2>
+  {%- endif -%}
+  {%- if section.settings.text != blank -%}
+    <p>{{ section.settings.text }}</p>
+  {%- endif -%}
+  {% form 'customer', class: 'newsletter-form' %}
+    <input type="email" name="contact[email]" placeholder="{{ section.settings.placeholder | default: 'Votre adresse email' }}" required aria-label="Email">
+    <button type="submit" class="btn btn--primary">{{ section.settings.button_label | default: "S'inscrire" }}</button>
+  {% endform %}
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    { "type": "text", "id": "title", "default": "Restez informé", "label": "Titre" },
+    { "type": "text", "id": "text", "default": "Recevez nos actualités et offres exclusives.", "label": "Description" },
+    { "type": "text", "id": "placeholder", "default": "Votre adresse email", "label": "Placeholder" },
+    { "type": "text", "id": "button_label", "default": "S'inscrire", "label": "Texte du bouton" }
+  ],
+  "presets": [{ "name": "Newsletter" }]
+}
+{% endschema %}

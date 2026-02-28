@@ -1,0 +1,21 @@
+<div class="customer-page">
+  <h1>Connexion</h1>
+  {% form 'customer_login' %}
+    <div class="customer-form">
+      {{ form.errors | default_errors }}
+      <label for="email">Email</label>
+      <input type="email" id="email" name="customer[email]" autocomplete="email" required>
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" name="customer[password]" autocomplete="current-password" required>
+      <button type="submit" class="btn btn--primary btn--full">Se connecter</button>
+    </div>
+  {% endform %}
+  <div class="customer-form-footer">
+    <p>Pas encore de compte ? <a href="/account/register">Créer un compte</a></p>
+    <p><a href="#recover">Mot de passe oublié ?</a></p>
+  </div>
+</div>
+
+{% schema %}
+{ "name": "Connexion", "settings": [] }
+{% endschema %}

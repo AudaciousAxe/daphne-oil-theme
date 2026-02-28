@@ -1,0 +1,34 @@
+{%- paginate search.results by 12 -%}
+<div class="search-page">
+  <h1>Recherche</h1>
+  <form action="/search" method="get" class="search-form">
+    <input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Rechercher..." aria-label="Rechercher">
+    <button type="submit" class="btn btn--primary">Rechercher</button>
+  </form>
+  {%- if search.performed -%}
+    {%- if search.results_count > 0 -%}
+      <p class="collection-count text-center" style="margin-bottom:40px;">{{ search.results_count }} résultat{%- if search.results_count > 1 -%}s{%- endif -%} pour "{{ search.terms }}"</p>
+      <div class="products-grid">
+        {%- for item in search.results -%}
+          {%- if item.object_type == 'product' -%}
+            {% render 'product-card', product: item %}
+          {%- else -%}
+            <a href="{{ item.url }}" class="product-card">
+              <div class="product-card-image">{%- if item.image -%}<img src="{{ item.image | image_url: width: 300 }}" alt="">{%- endif -%}</div>
+              <h4>{{ item.title }}</h4>
+              <p class="product-card-meta">{{ item.content | strip_html | truncatewords: 15 }}</p>
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      {% render 'pagination', paginate: paginate %}
+    {%- else -%}
+      <div class="cart-empty"><p>Aucun résultat pour "{{ search.terms }}".</p><a href="/" class="btn btn--primary">Retour à l'accueil</a></div>
+    {%- endif -%}
+  {%- endif -%}
+</div>
+{%- endpaginate -%}
+
+{% schema %}
+{ "name": "Page recherche", "settings": [] }
+{% endschema %}

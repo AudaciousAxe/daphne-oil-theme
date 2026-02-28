@@ -1,14 +1,16 @@
 {%- assign collection = section.settings.collection -%}
-<section class="products-section" data-section-id="{{ section.id }}">
+<section class="products-grid-section" data-section-id="{{ section.id }}">
   <div class="products-header">
     <div>
       {%- if section.settings.subtitle != blank -%}
         <p class="about-tag">{{ section.settings.subtitle }}</p>
       {%- endif -%}
-      <h2>{{ section.settings.title }}</h2>
+      {%- if section.settings.title != blank -%}
+        <h2 class="section-title">{{ section.settings.title }}</h2>
+      {%- endif -%}
     </div>
     {%- if section.settings.show_view_all and collection != blank -%}
-      <a href="{{ collection.url }}" class="btn btn--outline">Voir tout</a>
+      <a href="{{ collection.url }}" class="btn--outline">Voir tout</a>
     {%- endif -%}
   </div>
   <div class="products-grid">
@@ -22,7 +24,7 @@
           <div class="product-card-image">{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
           <h4>Produit exemple {{ i }}</h4>
           <p class="product-card-meta">Bio · 250ml</p>
-          <p class="product-card-price">€12,90</p>
+          <span class="product-card-price">€12,90</span>
         </div>
       {%- endfor -%}
     {%- endif -%}

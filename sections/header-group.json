@@ -5,7 +5,7 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "item1": { "type": "announcement", "settings": { "text": "Livraison gratuite dès 49€", "icon": "shipping" } },
+        "item1": { "type": "announcement", "settings": { "text": "Livraison gratuite dès 99€ d'achat", "icon": "shipping" } },
         "item2": { "type": "announcement", "settings": { "text": "Bio certifiée Certisys", "icon": "leaf" } },
         "item3": { "type": "announcement", "settings": { "text": "Expédition 24-48h", "icon": "clock" } }
       },

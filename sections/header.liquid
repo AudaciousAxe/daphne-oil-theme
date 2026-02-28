@@ -1,9 +1,9 @@
-<header class="site-header" data-section-id="{{ section.id }}">
+<header class="site-header" id="site-header" data-section-id="{{ section.id }}">
   <div class="header-inner">
     <div class="header-logo">
       <a href="/" aria-label="{{ shop.name }}">
         {%- if settings.logo != blank -%}
-          <img src="{{ settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}" style="height: {{ settings.logo_width }}px; width: auto;">
+          <img src="{{ settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}" style="height: {{ settings.logo_width | default: 48 }}px; width: auto;">
         {%- else -%}
           <span>{{ shop.name }}</span>
         {%- endif -%}
@@ -12,7 +12,7 @@
 
     <nav class="header-nav" role="navigation">
       {%- for link in section.settings.menu.links -%}
-        <a href="{{ link.url }}">{{ link.title }}</a>
+        <a href="{{ link.url }}"{% if link.active %} class="active"{% endif %}>{{ link.title }}</a>
       {%- endfor -%}
     </nav>
 

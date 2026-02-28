@@ -109,7 +109,7 @@
             <input type="number" name="quantity" value="1" min="1" id="product-qty" aria-label="Quantité">
             <button type="button" class="qty-plus" aria-label="Augmenter">+</button>
           </div>
-          <button type="submit" class="product-add-btn" style="flex:1;" {% unless current_variant.available %}disabled{% endunless %}>
+          <button type="submit" class="product-add-btn" {% unless current_variant.available %}disabled{% endunless %}>
             {%- if current_variant.available -%}
               Ajouter au panier
             {%- else -%}
@@ -168,7 +168,7 @@
 {%- if section.settings.show_recommendations and recommendations.performed and recommendations.products_count > 0 -%}
   <div class="product-recommendations">
     <h2>{{ section.settings.recommendations_title | default: 'Vous aimerez aussi' }}</h2>
-    <div class="products-grid" style="max-width:var(--max-width);margin:0 auto;padding:0 60px;">
+    <div class="products-grid" style="max-width:var(--max-width);margin:0 auto;padding:0 80px;">
       {%- for product in recommendations.products limit: 4 -%}
         {% render 'product-card', product: product %}
       {%- endfor -%}

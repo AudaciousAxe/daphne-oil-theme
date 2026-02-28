@@ -1,7 +1,0 @@
-{
-  "sections": {
-    "main": { "type": "main-page" },
-    "newsletter": { "type": "newsletter", "settings": { "title": "Restez informé", "text": "Recevez nos actualités et offres exclusives." } }
-  },
-  "order": ["main", "newsletter"]
-}

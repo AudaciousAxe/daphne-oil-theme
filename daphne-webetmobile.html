@@ -21,11 +21,14 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:var(--sans);background:var(--black);color:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img{max-width:100%;height:auto}
 
-/* ===== ANNOUNCE BAR ===== */
-.announce-bar{background:linear-gradient(135deg,var(--olive-dark) 0%,var(--olive) 50%,var(--olive-light) 100%);padding:10px 20px;text-align:center;display:flex;justify-content:center;align-items:center;gap:40px;font-size:12px;letter-spacing:1px;color:var(--white)}
-.announce-bar span{display:flex;align-items:center;gap:8px;opacity:0.9}
+/* ===== ANNOUNCE BAR (Marquee) ===== */
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.announce-bar{background:linear-gradient(135deg,var(--olive-dark) 0%,var(--olive) 50%,var(--olive-light) 100%);overflow:hidden;white-space:nowrap;position:relative;height:40px;display:flex;align-items:center}
+.announce-track{display:inline-flex;align-items:center;animation:marquee 20s linear infinite;will-change:transform}
+.announce-track:hover{animation-play-state:paused}
+.announce-bar span{display:inline-flex;align-items:center;gap:8px;opacity:0.9;font-size:12px;letter-spacing:1px;color:var(--white);padding:0 16px}
 .announce-bar span strong{font-weight:600;opacity:1}
-.announce-divider{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.4)}
+.announce-divider{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.4);flex-shrink:0;display:inline-block;margin:0 20px}
 
 /* ===== NAV (Desktop) ===== */
 nav{position:sticky;top:0;left:0;right:0;z-index:1000;padding:0 60px;height:100px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.05);transition:all 0.4s ease}
@@ -188,7 +191,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,0.05);paddi
   .nav-links{display:none}
   .hamburger{display:flex}
   .hero-content{padding:0 40px}
-  .announce-bar{gap:20px;font-size:11px;flex-wrap:wrap}
+  .announce-bar span{font-size:11px}
   .usp-strip{grid-template-columns:repeat(2,1fr);padding:60px 40px}
   .usp-item:nth-child(2)::after{display:none}
   .about{padding:80px 40px;gap:40px}
@@ -210,8 +213,9 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,0.05);paddi
   nav{padding:0 20px;height:72px;padding-top:var(--safe-top)}
   nav.scrolled{height:calc(64px + var(--safe-top))}
   .nav-logo img{height:64px}
-  .announce-bar{flex-direction:column;gap:6px;padding:8px 16px;padding-top:calc(8px + var(--safe-top));font-size:11px}
-  .announce-divider{display:none}
+  .announce-bar{height:36px;padding-top:var(--safe-top)}
+  .announce-bar span{font-size:11px}
+  .announce-track{animation-duration:15s}
   .hero{min-height:100svh;align-items:flex-end}
   .hero-slide{align-items:flex-end}
   .hero-content{padding:0 24px 100px;max-width:100%;width:100%}
@@ -267,11 +271,20 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,0.05);paddi
 <div class="prototype-badge">Daphne — Web & Mobile</div>
 
 <div class="announce-bar">
-  <span>🚚 <strong>Livraison gratuite</strong> dès 99€ d'achat</span>
-  <span class="announce-divider"></span>
-  <span>🌿 Huile d'olive <strong>bio certifiée</strong> Certisys</span>
-  <span class="announce-divider"></span>
-  <span>📦 Expédition sous <strong>24-48h</strong></span>
+  <div class="announce-track">
+    <span>🚚 <strong>Livraison gratuite</strong> dès 99€ d'achat</span>
+    <span class="announce-divider"></span>
+    <span>🌿 Huile d'olive <strong>bio certifiée</strong> Certisys</span>
+    <span class="announce-divider"></span>
+    <span>📦 Expédition sous <strong>24-48h</strong></span>
+    <span class="announce-divider"></span>
+    <span>🚚 <strong>Livraison gratuite</strong> dès 99€ d'achat</span>
+    <span class="announce-divider"></span>
+    <span>🌿 Huile d'olive <strong>bio certifiée</strong> Certisys</span>
+    <span class="announce-divider"></span>
+    <span>📦 Expédition sous <strong>24-48h</strong></span>
+    <span class="announce-divider"></span>
+  </div>
 </div>
 
 <nav id="navbar">

@@ -58,8 +58,12 @@ nav.scrolled{height:80px;background:rgba(10,10,10,0.95)}
 
 /* ===== HERO ===== */
 .hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;overflow:hidden;margin-top:0}
-.hero-bg{position:absolute;inset:0}
-.hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(0.4) contrast(1.1)}
+.hero-bg{position:absolute;inset:0;z-index:0;transition:opacity 1s ease}
+.hero-bg img,.hero-bg picture{width:100%;height:100%;display:block}
+.hero-bg picture img{width:100%;height:100%;object-fit:cover;filter:brightness(0.4) contrast(1.1)}
+.hero-bg>img{width:100%;height:100%;object-fit:cover;filter:brightness(0.4) contrast(1.1)}
+.hero-slide .hero-bg{opacity:0;transition:opacity 1s ease;z-index:0}
+.hero-slide.active .hero-bg{opacity:1}
 .hero-gradient{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,0.9) 0%,rgba(10,10,10,0.4) 50%,transparent 100%),linear-gradient(to top,var(--black) 0%,transparent 30%);z-index:1}
 .hero-content{position:relative;z-index:2;padding:0 80px;max-width:700px}
 .hero-tag{font-size:12px;letter-spacing:5px;text-transform:uppercase;color:var(--olive-light);margin-bottom:24px;font-weight:500;opacity:0}
@@ -324,6 +328,12 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,0.05);paddi
   </div>
   <!-- Slide 2 - Notre Histoire -->
   <div class="hero-slide">
+    <div class="hero-bg">
+      <picture>
+        <source media="(max-width:768px)" srcset="assets/culture d olives Daphne Oil cultive carré.webp">
+        <img src="assets/culture format paysage.webp" alt="Culture d'olives Daphne Oil">
+      </picture>
+    </div>
     <div class="hero-content">
       <p class="hero-tag">Depuis 1854</p>
       <h1 class="hero-title">Notre<br><em>histoire</em></h1>
@@ -333,6 +343,12 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,0.05);paddi
   </div>
   <!-- Slide 3 - Nos Produits -->
   <div class="hero-slide">
+    <div class="hero-bg">
+      <picture>
+        <source media="(max-width:768px)" srcset="assets/olives dans une main format carre.webp">
+        <img src="assets/olive dans une main.webp" alt="Olives dans une main">
+      </picture>
+    </div>
     <div class="hero-content">
       <p class="hero-tag">La gamme Daphne</p>
       <h1 class="hero-title">Découvrez nos<br><em>produits</em></h1>
@@ -462,6 +478,7 @@ document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
   let current=0;
   let interval;
 
+  const globalBg=document.querySelector('.hero > .hero-bg');
   function goToSlide(n){
     slides[current].classList.remove('active');
     dots[current].classList.remove('active');
@@ -471,6 +488,7 @@ document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
     current=n;
     slides[current].classList.add('active');
     dots[current].classList.add('active');
+    if(globalBg) globalBg.style.opacity = slides[current].querySelector('.hero-bg') ? '0' : '1';
     [slides[current].querySelector('.hero-tag'),slides[current].querySelector('.hero-title'),slides[current].querySelector('.hero-desc'),slides[current].querySelector('.hero-btns')].forEach(el=>{
       if(el){el.style.animation='none';el.offsetHeight;el.style.animation='';}
     });

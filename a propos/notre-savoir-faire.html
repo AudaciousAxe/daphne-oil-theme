@@ -991,6 +991,413 @@
     color: var(--gray);
   }
 
+  /* ─── SANTÉ / LONGÉVITÉ SECTION ─── */
+  .sante-hero {
+    position: relative;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .sante-hero-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .sante-hero-bg img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(0.3) contrast(1.1) saturate(0.8);
+  }
+
+  .sante-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.8) 100%);
+  }
+
+  .sante-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 80px 40px;
+    max-width: 700px;
+  }
+
+  .sante-hero-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--olive-light);
+    margin-bottom: 20px;
+  }
+
+  .sante-hero-title {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--cream);
+    margin-bottom: 24px;
+  }
+
+  .sante-hero-title em {
+    font-style: italic;
+    color: var(--olive-light);
+  }
+
+  .sante-hero-quote {
+    font-family: var(--serif);
+    font-size: clamp(16px, 2vw, 20px);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--cream-dim);
+    margin-bottom: 12px;
+  }
+
+  .sante-hero-author {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--olive-light);
+  }
+
+  /* Composition */
+  .composition-section {
+    background: var(--dark);
+    border-top: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .composition-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .composition-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .composition-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--olive-light);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .composition-tag::before {
+    content: '';
+    width: 30px; height: 1px;
+    background: var(--olive);
+  }
+
+  .composition-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--cream);
+  }
+
+  .composition-desc {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--cream-dim);
+  }
+
+  .nutri-table {
+    background: var(--dark-card);
+    border: 1px solid rgba(139,154,58,0.15);
+    overflow: hidden;
+  }
+
+  .nutri-table-header {
+    padding: 20px 28px;
+    background: rgba(139,154,58,0.1);
+    border-bottom: 1px solid rgba(139,154,58,0.2);
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--cream);
+  }
+
+  .nutri-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: background 0.3s;
+  }
+
+  .nutri-row:last-child { border-bottom: none; }
+
+  .nutri-row:hover { background: rgba(139,154,58,0.05); }
+
+  .nutri-row.sub {
+    padding-left: 48px;
+    font-size: 13px;
+  }
+
+  .nutri-label {
+    font-size: 14px;
+    color: var(--cream-dim);
+  }
+
+  .nutri-value {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--olive-light);
+  }
+
+  .nutri-row.sub .nutri-label { color: var(--gray); }
+  .nutri-row.sub .nutri-value { font-size: 14px; color: var(--cream-dim); }
+
+  /* Bienfaits */
+  .bienfaits-section {
+    padding: 100px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .bienfaits-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 80px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--olive), transparent);
+  }
+
+  .bienfaits-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .bienfaits-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--olive-light);
+    margin-bottom: 16px;
+  }
+
+  .bienfaits-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 300;
+    color: var(--cream);
+  }
+
+  .bienfaits-title em {
+    font-style: italic;
+    color: var(--olive-light);
+  }
+
+  .bienfaits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .bienfaits-text {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--cream-dim);
+  }
+
+  .bienfaits-text p { margin-bottom: 20px; }
+
+  .bienfaits-highlight {
+    padding: 24px 28px;
+    background: var(--olive-glow);
+    border-left: 3px solid var(--olive);
+    border-radius: 0 8px 8px 0;
+    margin-top: 8px;
+  }
+
+  .bienfaits-highlight p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--cream);
+    font-weight: 400;
+    margin-bottom: 0;
+  }
+
+  .bienfaits-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .bienfait-card {
+    background: var(--dark-card);
+    border: 1px solid rgba(139,154,58,0.1);
+    padding: 28px 32px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    transition: all 0.4s;
+  }
+
+  .bienfait-card:hover {
+    border-color: rgba(139,154,58,0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(139,154,58,0.08);
+  }
+
+  .bienfait-icon {
+    flex-shrink: 0;
+    width: 48px; height: 48px;
+    border: 1px solid rgba(139,154,58,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bienfait-icon svg {
+    width: 22px; height: 22px;
+    stroke: var(--olive-light);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .bienfait-card h4 {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  .bienfait-card p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--gray);
+  }
+
+  /* Olives section */
+  .olives-section {
+    background: var(--dark);
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .olives-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 80px;
+  }
+
+  .olives-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .olives-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--olive-light);
+    margin-bottom: 16px;
+  }
+
+  .olives-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 300;
+    color: var(--cream);
+  }
+
+  .olives-title em {
+    font-style: italic;
+    color: var(--olive-light);
+  }
+
+  .olives-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .olive-card {
+    background: var(--dark-card);
+    border: 1px solid rgba(139,154,58,0.1);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s;
+  }
+
+  .olive-card:hover {
+    border-color: rgba(139,154,58,0.35);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(139,154,58,0.08);
+  }
+
+  .olive-card-accent {
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--olive);
+  }
+
+  .olive-card-name {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+
+  .olive-card-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    background: rgba(139,154,58,0.15);
+    border: 1px solid rgba(139,154,58,0.3);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--olive-light);
+    margin-bottom: 20px;
+  }
+
+  .olive-card-text {
+    font-size: 14px;
+    line-height: 1.85;
+    color: var(--cream-dim);
+  }
+
+  .olives-intro {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--cream-dim);
+    text-align: center;
+    max-width: 800px;
+    margin: -30px auto 50px;
+  }
+
   /* ─── CTA SECTION ─── */
   .cta-band {
     padding: 80px 40px;
@@ -1196,6 +1603,12 @@
     .conditionnement { padding: 80px 40px; }
     .conditionnement-grid { grid-template-columns: 1fr; gap: 48px; }
 
+    .composition-inner { grid-template-columns: 1fr; padding: 80px 40px; gap: 48px; }
+    .bienfaits-section { padding: 80px 40px; }
+    .bienfaits-grid { grid-template-columns: 1fr; gap: 40px; }
+    .olives-inner { padding: 80px 40px; }
+    .olives-grid { grid-template-columns: 1fr; }
+
     .footer-top { grid-template-columns: 1fr 1fr; }
   }
 
@@ -1234,6 +1647,14 @@
     .gallery-item:nth-child(2) { grid-column: 1; grid-row: auto; }
 
     .conditionnement { padding: 60px 24px; }
+
+    .composition-inner { padding: 60px 24px; gap: 32px; }
+    .bienfaits-section { padding: 60px 24px; }
+    .olives-inner { padding: 60px 24px; }
+    .olives-grid { gap: 24px; }
+    .olive-card { padding: 28px; }
+    .sante-hero { min-height: 320px; }
+    .sante-hero-content { padding: 60px 24px; }
 
     .cta-band { padding: 60px 24px; }
 
@@ -1466,6 +1887,147 @@
     <div class="gallery-item">
       <img src="https://raw.githubusercontent.com/AudaciousAxe/daphne-oil-theme/claude/improve-about-page-style-YwOyC/a%20propos/Evangelos%20fondateur%20.webp" alt="Evangelos dans les oliveraies">
       <div class="gallery-item-caption"><span>Evangelos dans les champs</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION SANTÉ & LONGÉVITÉ                              -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<!-- HERO SANTÉ -->
+<section class="sante-hero reveal">
+  <div class="sante-hero-bg">
+    <img src="https://images.unsplash.com/photo-1474979266404-7571d10e3481?w=1600&q=80" alt="Huile d'olive versée dans un bol">
+  </div>
+  <div class="sante-hero-overlay"></div>
+  <div class="sante-hero-content">
+    <p class="sante-hero-tag">L'huile et la santé</p>
+    <h2 class="sante-hero-title">Le secret de la <em>longévité</em></h2>
+    <p class="sante-hero-quote">&laquo; Existe-t-il pour l'homme un bien plus précieux que la Santé ? &raquo;</p>
+    <p class="sante-hero-author">— Socrate</p>
+  </div>
+</section>
+
+<!-- COMPOSITION NUTRITIONNELLE -->
+<section class="composition-section reveal">
+  <div class="composition-inner">
+    <div class="composition-content">
+      <p class="composition-tag">Valeurs nutritionnelles</p>
+      <h2 class="composition-title">La composition</h2>
+      <p class="composition-desc">L'huile d'olive est un trésor nutritionnel naturel. Riche en acides gras mono-insaturés, elle constitue la base du régime méditerranéen reconnu par l'UNESCO. Voici sa composition détaillée pour 100 ml.</p>
+    </div>
+    <div class="nutri-table">
+      <div class="nutri-table-header">Pour 100 ml</div>
+      <div class="nutri-row">
+        <span class="nutri-label">Énergie</span>
+        <span class="nutri-value">3389 KJ — 824 KCal</span>
+      </div>
+      <div class="nutri-row">
+        <span class="nutri-label">Lipides</span>
+        <span class="nutri-value">91,6 g</span>
+      </div>
+      <div class="nutri-row sub">
+        <span class="nutri-label">dont acides gras saturés</span>
+        <span class="nutri-value">12,8 g</span>
+      </div>
+      <div class="nutri-row">
+        <span class="nutri-label">Glucides</span>
+        <span class="nutri-value">0 g</span>
+      </div>
+      <div class="nutri-row sub">
+        <span class="nutri-label">dont sucres</span>
+        <span class="nutri-value">0 g</span>
+      </div>
+      <div class="nutri-row">
+        <span class="nutri-label">Protéines</span>
+        <span class="nutri-value">0 g</span>
+      </div>
+      <div class="nutri-row">
+        <span class="nutri-label">Sel</span>
+        <span class="nutri-value">0 g</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LES BIENFAITS -->
+<section class="bienfaits-section reveal">
+  <div class="bienfaits-header">
+    <p class="bienfaits-tag">Santé & bien-être</p>
+    <h2 class="bienfaits-title">Les <em>bienfaits</em></h2>
+  </div>
+  <div class="bienfaits-grid">
+    <div class="bienfaits-text">
+      <p>Depuis les années 70, les chercheurs et scientifiques ont commencé à étudier le régime méditerranéen et ont constaté que la consommation d'huile d'olive des méditerranéens avait un effet bénéfique sur la perte de poids, le diabète ainsi que la diminution des risques de maladies cardiovasculaires.</p>
+      <p>En effet, l'huile d'olive est majoritairement composée d'acides gras mono et polyinsaturés. Ceux-ci ont un rôle déterminant dans la prévention du risque d'infarctus du myocarde et des maladies coronariennes. L'huile d'olive améliore même les facteurs liés aux maladies cardiovasculaires grâce à la diminution du taux de glucose et de cholestérol dans le sang tout en permettant de mieux contrôler la tension artérielle.</p>
+      <p>Par ailleurs, une grande majorité des médecins perçoivent l'huile d'olive comme une arme contre les cancers. En effet, les pouvoirs antioxydants de l'huile d'olive retardent le vieillissement des cellules du corps humain (Vitamine E, C et polyphénols). En d'autres termes, l'huile d'olive permet d'approvisionner en quantité considérable les cellules du corps en oxygène. Celui-ci lutte activement contre les radicaux libres qui sont responsables de maladies, dont certains cancers (sein, prostate, côlon ou endomètre).</p>
+      <div class="bienfaits-highlight">
+        <p>L'huile d'olive et le régime méditerranéen sont souvent considérés comme le secret de la longévité. Considéré par les experts comme un des meilleurs régimes au monde avec le régime japonais d'Okinawa.</p>
+      </div>
+    </div>
+    <div class="bienfaits-cards">
+      <div class="bienfait-card">
+        <div class="bienfait-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <div>
+          <h4>Santé cardiovasculaire</h4>
+          <p>Diminution du taux de glucose et de cholestérol, meilleur contrôle de la tension artérielle.</p>
+        </div>
+      </div>
+      <div class="bienfait-card">
+        <div class="bienfait-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <h4>Pouvoir antioxydant</h4>
+          <p>Vitamine E, C et polyphénols ralentissent le vieillissement cellulaire et combattent les radicaux libres.</p>
+        </div>
+      </div>
+      <div class="bienfait-card">
+        <div class="bienfait-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+        </div>
+        <div>
+          <h4>Régime méditerranéen</h4>
+          <p>Composé de céréales, huile d'olive, poissons, fruits et légumes pour une plus longue espérance de vie.</p>
+        </div>
+      </div>
+      <div class="bienfait-card">
+        <div class="bienfait-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div>
+          <h4>Héritage millénaire</h4>
+          <p>Selon la mythologie grecque, Athéna offrit un olivier aux habitants d'Athènes, symbole de prospérité et de paix.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LES OLIVES -->
+<section class="olives-section reveal">
+  <div class="olives-inner">
+    <div class="olives-header">
+      <p class="olives-tag">Nos variétés</p>
+      <h2 class="olives-title">Les <em>olives</em></h2>
+    </div>
+    <p class="olives-intro">Il existe plus d'une centaine de variétés d'olives mais la Grèce n'en cultive qu'une quinzaine. Selon qu'elles seront utilisées pour produire de l'huile ou pour être consommées sur votre table, la variété choisie sera différente. La couleur de l'olive passe du vert au violet et finalement au noir durant les différentes étapes de sa maturité.</p>
+    <div class="olives-grid">
+      <div class="olive-card">
+        <div class="olive-card-accent"></div>
+        <div class="olive-card-name">Koroneiki</div>
+        <span class="olive-card-badge">Huile d'olive</span>
+        <p class="olive-card-text">La variété Koroneiki est la variété la plus populaire en Grèce et représente 60 à 65 pour cent de la production totale du pays. L'arbre Koroneiki est robuste et résistant aux températures extrêmes, celui-ci donne la meilleure huile d'olive par rapport aux autres variétés. L'huile que nous produisons est issue de cette variété d'olive qui mûrit entre le début octobre jusqu'au mois de décembre.</p>
+      </div>
+      <div class="olive-card">
+        <div class="olive-card-accent"></div>
+        <div class="olive-card-name">Kalamon</div>
+        <span class="olive-card-badge">Olive de table</span>
+        <p class="olive-card-text">La variété Kalamon est une olive simple qui mûrit entre décembre et janvier. L'olive est récoltée lorsque sa couleur a viré intégralement vers le violet. L'arbre est résistant aux températures hivernales et sensible aux chaleurs estivales de la Grèce. Les olives de table que nous cultivons sont de cette variété et sont reconnues comme étant les plus célèbres au monde pour la dégustation de table !</p>
+      </div>
     </div>
   </div>
 </section>

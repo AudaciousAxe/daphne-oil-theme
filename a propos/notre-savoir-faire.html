@@ -188,7 +188,7 @@
     position: absolute;
     bottom: 0; left: 0; right: 0;
     height: 200px;
-    background: linear-gradient(to bottom, transparent, var(--black));
+    background: linear-gradient(to bottom, transparent, var(--cream));
   }
 
   .page-hero-content {
@@ -278,10 +278,11 @@
     transform: translateY(-2px);
   }
 
-  /* ─── FEATURES BAR ─── */
+  /* ─── FEATURES BAR — LIGHT ─── */
   .features-bar {
     padding: 60px 40px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: var(--cream);
+    border-bottom: none;
   }
 
   .features-grid {
@@ -303,7 +304,7 @@
   .feature-icon {
     width: 52px;
     height: 52px;
-    border: 1px solid rgba(139,154,58,0.3);
+    border: 1px solid var(--olive);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -312,13 +313,13 @@
   }
 
   .feature-item:hover .feature-icon {
-    border-color: var(--olive-light);
-    background: var(--olive-glow);
+    border-color: var(--olive-dark);
+    background: rgba(139,154,58,0.12);
   }
 
   .feature-icon svg {
     width: 22px; height: 22px;
-    stroke: var(--olive-light);
+    stroke: var(--olive-dark);
     fill: none;
     stroke-width: 1.5;
   }
@@ -327,32 +328,31 @@
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 1px;
-    color: var(--cream);
+    color: var(--black);
   }
 
   .feature-desc {
     font-size: 12px;
     line-height: 1.5;
-    color: var(--gray);
+    color: #666;
     max-width: 200px;
   }
 
-  /* ─── CITATION INTRO ─── */
+  /* ─── CITATION INTRO — OLIVE GREEN ─── */
   .quote-section {
     padding: 80px 40px;
     text-align: center;
     position: relative;
-    background: var(--dark);
-    border-top: 1px solid rgba(255,255,255,0.04);
-    border-bottom: 1px solid rgba(255,255,255,0.04);
+    background: linear-gradient(135deg, var(--olive-dark) 0%, var(--olive) 100%);
+    border: none;
   }
 
   .quote-section::before {
     content: '\201C';
     font-family: var(--serif);
     font-size: 140px;
-    color: var(--olive);
-    opacity: 0.2;
+    color: #fff;
+    opacity: 0.15;
     position: absolute;
     top: 10px;
     left: 50%;
@@ -366,7 +366,7 @@
     font-style: italic;
     font-weight: 300;
     line-height: 1.7;
-    color: var(--cream);
+    color: #fff;
     max-width: 700px;
     margin: 0 auto 16px;
   }
@@ -375,7 +375,7 @@
     font-size: 13px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--olive-light);
+    color: rgba(255,255,255,0.7);
   }
 
   /* ─── PROCESS STEPS ─── */
@@ -386,6 +386,7 @@
   .process-header {
     text-align: center;
     padding: 100px 40px 60px;
+    background: var(--dark);
   }
 
   .process-tag {
@@ -450,12 +451,12 @@
     flex-direction: column;
     justify-content: center;
     padding: 80px;
-    background: var(--dark);
+    background: var(--cream);
     position: relative;
   }
 
   .step:nth-child(even) .step-content {
-    background: var(--dark-subtle);
+    background: var(--dark);
   }
 
   .step-number {
@@ -463,7 +464,7 @@
     font-size: 80px;
     font-weight: 300;
     color: var(--olive);
-    opacity: 0.2;
+    opacity: 0.15;
     position: absolute;
     top: 40px;
     right: 60px;
@@ -473,6 +474,8 @@
   .step:nth-child(even) .step-number {
     right: auto;
     left: 60px;
+    color: var(--olive);
+    opacity: 0.2;
   }
 
   .step-tag {
@@ -480,12 +483,14 @@
     font-weight: 500;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--olive-light);
+    color: var(--olive-dark);
     margin-bottom: 20px;
     display: flex;
     align-items: center;
     gap: 12px;
   }
+
+  .step:nth-child(even) .step-tag { color: var(--olive-light); }
 
   .step-tag::before {
     content: '';
@@ -498,31 +503,41 @@
     font-size: clamp(28px, 3vw, 40px);
     font-weight: 400;
     line-height: 1.2;
-    color: var(--cream);
+    color: var(--black);
     margin-bottom: 24px;
   }
+
+  .step:nth-child(even) .step-title { color: var(--cream); }
 
   .step-text {
     font-size: 15px;
     line-height: 1.85;
-    color: var(--cream-dim);
+    color: #555;
     max-width: 480px;
   }
+
+  .step:nth-child(even) .step-text { color: var(--cream-dim); }
 
   .step-highlight {
     margin-top: 32px;
     padding: 20px 24px;
-    background: var(--olive-glow);
+    background: rgba(139,154,58,0.1);
     border-left: 3px solid var(--olive);
     border-radius: 0 8px 8px 0;
+  }
+
+  .step:nth-child(even) .step-highlight {
+    background: var(--olive-glow);
   }
 
   .step-highlight p {
     font-size: 14px;
     line-height: 1.7;
-    color: var(--cream);
+    color: var(--black);
     font-weight: 400;
   }
+
+  .step:nth-child(even) .step-highlight p { color: var(--cream); }
 
   /* ─── TERROIR (full-width image section) ─── */
   .terroir-section {
@@ -613,11 +628,10 @@
     transform: translateY(-2px);
   }
 
-  /* ─── FONDATEUR SECTION ─── */
+  /* ─── FONDATEUR SECTION — LIGHT ─── */
   .fondateur-section {
-    background: var(--dark);
-    border-top: 1px solid rgba(255,255,255,0.04);
-    border-bottom: 1px solid rgba(255,255,255,0.04);
+    background: #fff;
+    border: none;
   }
 
   .fondateur {
@@ -642,7 +656,7 @@
     width: 100%; height: 100%;
     object-fit: cover;
     object-position: center top;
-    filter: brightness(0.9) contrast(1.05);
+    filter: brightness(0.95) contrast(1.05);
     transition: transform 0.6s ease;
   }
 
@@ -671,7 +685,7 @@
     font-weight: 500;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--olive-light);
+    color: var(--olive-dark);
     display: flex;
     align-items: center;
     gap: 12px;
@@ -688,18 +702,18 @@
     font-size: clamp(32px, 3.5vw, 46px);
     font-weight: 400;
     line-height: 1.15;
-    color: var(--cream);
+    color: var(--black);
   }
 
   .fondateur-name em {
     font-style: italic;
-    color: var(--olive-light);
+    color: var(--olive);
   }
 
   .fondateur-text {
     font-size: 15px;
     line-height: 1.85;
-    color: var(--cream-dim);
+    color: #555;
   }
 
   .fondateur-quote {
@@ -708,7 +722,7 @@
     font-style: italic;
     font-weight: 300;
     line-height: 1.6;
-    color: var(--cream);
+    color: var(--black);
     padding-left: 24px;
     border-left: 2px solid var(--olive);
     margin-top: 8px;
@@ -720,7 +734,7 @@
     gap: 40px;
     margin-top: 12px;
     padding-top: 24px;
-    border-top: 1px solid rgba(255,255,255,0.06);
+    border-top: 1px solid rgba(0,0,0,0.08);
   }
 
   .stat {
@@ -731,7 +745,7 @@
     font-family: var(--serif);
     font-size: 40px;
     font-weight: 300;
-    color: var(--olive-light);
+    color: var(--olive);
     line-height: 1;
     margin-bottom: 6px;
   }
@@ -741,10 +755,14 @@
     font-weight: 500;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--gray);
+    color: #888;
   }
 
   /* ─── GALLERY MOSAIC ─── */
+  .gallery-wrapper {
+    background: var(--dark);
+  }
+
   .gallery {
     padding: 100px 40px 120px;
     max-width: 1200px;
@@ -934,6 +952,40 @@
     border-color: var(--olive);
     background: var(--olive-glow);
     transform: translateY(-1px);
+  }
+
+  .conditionnement-image {
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    margin-bottom: 20px;
+    background: var(--dark-card);
+    border: 2px dashed rgba(139,154,58,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .conditionnement-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .conditionnement-image:hover img {
+    transform: scale(1.03);
+  }
+
+  .placeholder-label {
+    position: absolute;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--olive-light);
+    opacity: 0.6;
+    text-align: center;
+    padding: 20px;
   }
 
   .conditionnement-visual {
@@ -1211,6 +1263,10 @@
     color: var(--cream);
   }
 
+  .bienfaits-wrapper {
+    background: #fff;
+  }
+
   .bienfaits-section {
     padding: 100px 80px;
     max-width: 1200px;
@@ -1237,7 +1293,7 @@
     font-weight: 500;
     letter-spacing: 5px;
     text-transform: uppercase;
-    color: var(--olive-light);
+    color: var(--olive-dark);
     margin-bottom: 16px;
   }
 
@@ -1245,12 +1301,12 @@
     font-family: var(--serif);
     font-size: clamp(28px, 3vw, 40px);
     font-weight: 300;
-    color: var(--cream);
+    color: var(--black);
   }
 
   .bienfaits-title em {
     font-style: italic;
-    color: var(--olive-light);
+    color: var(--olive);
   }
 
   .bienfaits-grid {
@@ -1263,14 +1319,14 @@
   .bienfaits-text {
     font-size: 15px;
     line-height: 1.85;
-    color: var(--cream-dim);
+    color: #555;
   }
 
   .bienfaits-text p { margin-bottom: 20px; }
 
   .bienfaits-highlight {
     padding: 24px 28px;
-    background: var(--olive-glow);
+    background: rgba(139,154,58,0.08);
     border-left: 3px solid var(--olive);
     border-radius: 0 8px 8px 0;
     margin-top: 8px;
@@ -1279,7 +1335,7 @@
   .bienfaits-highlight p {
     font-size: 14px;
     line-height: 1.7;
-    color: var(--cream);
+    color: var(--black);
     font-weight: 400;
     margin-bottom: 0;
   }
@@ -1291,8 +1347,8 @@
   }
 
   .bienfait-card {
-    background: var(--dark-card);
-    border: 1px solid rgba(139,154,58,0.1);
+    background: #f9f7f2;
+    border: 1px solid rgba(139,154,58,0.15);
     padding: 28px 32px;
     display: flex;
     align-items: flex-start;
@@ -1301,15 +1357,15 @@
   }
 
   .bienfait-card:hover {
-    border-color: rgba(139,154,58,0.4);
+    border-color: rgba(139,154,58,0.5);
     transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(139,154,58,0.08);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
   }
 
   .bienfait-icon {
     flex-shrink: 0;
     width: 48px; height: 48px;
-    border: 1px solid rgba(139,154,58,0.3);
+    border: 1px solid var(--olive);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1318,7 +1374,7 @@
 
   .bienfait-icon svg {
     width: 22px; height: 22px;
-    stroke: var(--olive-light);
+    stroke: var(--olive-dark);
     fill: none;
     stroke-width: 1.5;
   }
@@ -1327,14 +1383,14 @@
     font-family: var(--serif);
     font-size: 20px;
     font-weight: 400;
-    color: var(--cream);
+    color: var(--black);
     margin-bottom: 6px;
   }
 
   .bienfait-card p {
     font-size: 13px;
     line-height: 1.6;
-    color: var(--gray);
+    color: #666;
   }
 
   /* Olives section — LIGHT */
@@ -1932,6 +1988,7 @@
 </div>
 
 <!-- GALERIE -->
+<div class="gallery-wrapper">
 <section class="gallery reveal">
   <div class="gallery-header">
     <p class="gallery-tag">En images</p>
@@ -1956,6 +2013,7 @@
     </div>
   </div>
 </section>
+</div><!-- /gallery-wrapper -->
 
 <!-- ═══════════════════════════════════════════════════════ -->
 <!-- SECTION SANTÉ & LONGÉVITÉ                              -->
@@ -2020,6 +2078,9 @@
   </div>
 </section>
 
+<!-- BIENFAITS WRAPPER — LIGHT -->
+<div class="bienfaits-wrapper">
+
 <!-- IMAGE BIENFAITS -->
 <div class="bienfaits-image-banner reveal">
   <img src="https://raw.githubusercontent.com/AudaciousAxe/daphne-oil-theme/claude/improve-about-page-style-YwOyC/assets/culture-paysage.webp" alt="Oliveraies grecques baignées de soleil">
@@ -2082,6 +2143,8 @@
   </div>
 </section>
 
+</div><!-- /bienfaits-wrapper -->
+
 <!-- LES OLIVES -->
 <section class="olives-section reveal">
   <div class="olives-inner">
@@ -2133,6 +2196,10 @@
       </div>
     </div>
     <div class="conditionnement-visual">
+      <!-- 📸 IMAGE À PLACER : photo des bouteilles/formats de conditionnement -->
+      <div class="conditionnement-image">
+        <span class="placeholder-label">📸 Image à placer ici<br>Photo des bouteilles &amp; formats</span>
+      </div>
       <div class="cond-card">
         <div class="cond-icon">
           <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>

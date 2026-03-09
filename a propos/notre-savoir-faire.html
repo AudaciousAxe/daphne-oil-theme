@@ -1066,11 +1066,11 @@
     color: var(--olive-light);
   }
 
-  /* Composition */
+  /* Composition — LIGHT SECTION */
   .composition-section {
-    background: var(--dark);
-    border-top: 1px solid rgba(255,255,255,0.04);
-    border-bottom: 1px solid rgba(255,255,255,0.04);
+    background: var(--cream);
+    border-top: none;
+    border-bottom: none;
   }
 
   .composition-inner {
@@ -1094,7 +1094,7 @@
     font-weight: 500;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--olive-light);
+    color: var(--olive-dark);
     display: flex;
     align-items: center;
     gap: 12px;
@@ -1111,29 +1111,45 @@
     font-size: clamp(28px, 3vw, 40px);
     font-weight: 400;
     line-height: 1.2;
-    color: var(--cream);
+    color: var(--black);
   }
 
   .composition-desc {
     font-size: 15px;
     line-height: 1.85;
-    color: var(--cream-dim);
+    color: #555;
+  }
+
+  .composition-image {
+    overflow: hidden;
+    aspect-ratio: 4/3;
+  }
+
+  .composition-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .composition-image:hover img {
+    transform: scale(1.03);
   }
 
   .nutri-table {
-    background: var(--dark-card);
-    border: 1px solid rgba(139,154,58,0.15);
+    background: #fff;
+    border: 1px solid rgba(139,154,58,0.2);
     overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
   }
 
   .nutri-table-header {
     padding: 20px 28px;
-    background: rgba(139,154,58,0.1);
-    border-bottom: 1px solid rgba(139,154,58,0.2);
+    background: var(--olive);
+    border-bottom: none;
     font-family: var(--serif);
     font-size: 20px;
     font-weight: 400;
-    color: var(--cream);
+    color: #fff;
   }
 
   .nutri-row {
@@ -1141,13 +1157,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 14px 28px;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
     transition: background 0.3s;
   }
 
   .nutri-row:last-child { border-bottom: none; }
 
-  .nutri-row:hover { background: rgba(139,154,58,0.05); }
+  .nutri-row:hover { background: rgba(139,154,58,0.06); }
 
   .nutri-row.sub {
     padding-left: 48px;
@@ -1156,20 +1172,45 @@
 
   .nutri-label {
     font-size: 14px;
-    color: var(--cream-dim);
+    color: #444;
   }
 
   .nutri-value {
     font-family: var(--serif);
     font-size: 16px;
-    font-weight: 400;
-    color: var(--olive-light);
+    font-weight: 500;
+    color: var(--olive-dark);
   }
 
-  .nutri-row.sub .nutri-label { color: var(--gray); }
-  .nutri-row.sub .nutri-value { font-size: 14px; color: var(--cream-dim); }
+  .nutri-row.sub .nutri-label { color: #888; }
+  .nutri-row.sub .nutri-value { font-size: 14px; color: #666; }
 
-  /* Bienfaits */
+  /* Bienfaits — with full-width image banner */
+  .bienfaits-image-banner {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .bienfaits-image-banner img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 60%;
+    filter: brightness(0.7) saturate(1.1);
+  }
+
+  .bienfaits-image-banner .banner-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 40px 80px;
+    background: linear-gradient(to top, rgba(10,10,10,0.7), transparent);
+    font-family: var(--serif);
+    font-size: 18px;
+    font-style: italic;
+    color: var(--cream);
+  }
+
   .bienfaits-section {
     padding: 100px 80px;
     max-width: 1200px;
@@ -1296,10 +1337,10 @@
     color: var(--gray);
   }
 
-  /* Olives section */
+  /* Olives section — LIGHT */
   .olives-section {
-    background: var(--dark);
-    border-top: 1px solid rgba(255,255,255,0.04);
+    background: #f7f4ee;
+    border-top: none;
   }
 
   .olives-inner {
@@ -1318,7 +1359,7 @@
     font-weight: 500;
     letter-spacing: 5px;
     text-transform: uppercase;
-    color: var(--olive-light);
+    color: var(--olive-dark);
     margin-bottom: 16px;
   }
 
@@ -1326,12 +1367,12 @@
     font-family: var(--serif);
     font-size: clamp(28px, 3vw, 40px);
     font-weight: 300;
-    color: var(--cream);
+    color: var(--black);
   }
 
   .olives-title em {
     font-style: italic;
-    color: var(--olive-light);
+    color: var(--olive);
   }
 
   .olives-grid {
@@ -1341,18 +1382,38 @@
   }
 
   .olive-card {
-    background: var(--dark-card);
-    border: 1px solid rgba(139,154,58,0.1);
-    padding: 40px;
+    background: #fff;
+    border: 1px solid rgba(139,154,58,0.15);
+    padding: 0;
     position: relative;
     overflow: hidden;
     transition: all 0.4s;
   }
 
   .olive-card:hover {
-    border-color: rgba(139,154,58,0.35);
+    border-color: rgba(139,154,58,0.4);
     transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(139,154,58,0.08);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  }
+
+  .olive-card-image {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+  }
+
+  .olive-card-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .olive-card:hover .olive-card-image img {
+    transform: scale(1.05);
+  }
+
+  .olive-card-body {
+    padding: 32px 36px 36px;
   }
 
   .olive-card-accent {
@@ -1366,33 +1427,33 @@
     font-family: var(--serif);
     font-size: 28px;
     font-weight: 400;
-    color: var(--cream);
+    color: var(--black);
     margin-bottom: 8px;
   }
 
   .olive-card-badge {
     display: inline-block;
     padding: 4px 14px;
-    background: rgba(139,154,58,0.15);
+    background: rgba(139,154,58,0.1);
     border: 1px solid rgba(139,154,58,0.3);
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--olive-light);
+    color: var(--olive-dark);
     margin-bottom: 20px;
   }
 
   .olive-card-text {
     font-size: 14px;
     line-height: 1.85;
-    color: var(--cream-dim);
+    color: #555;
   }
 
   .olives-intro {
     font-size: 15px;
     line-height: 1.85;
-    color: var(--cream-dim);
+    color: #666;
     text-align: center;
     max-width: 800px;
     margin: -30px auto 50px;
@@ -1606,6 +1667,8 @@
     .composition-inner { grid-template-columns: 1fr; padding: 80px 40px; gap: 48px; }
     .bienfaits-section { padding: 80px 40px; }
     .bienfaits-grid { grid-template-columns: 1fr; gap: 40px; }
+    .bienfaits-image-banner { height: 300px; }
+    .bienfaits-image-banner .banner-caption { padding: 24px 40px; }
     .olives-inner { padding: 80px 40px; }
     .olives-grid { grid-template-columns: 1fr; }
 
@@ -1650,9 +1713,12 @@
 
     .composition-inner { padding: 60px 24px; gap: 32px; }
     .bienfaits-section { padding: 60px 24px; }
+    .bienfaits-image-banner { height: 220px; }
+    .bienfaits-image-banner .banner-caption { padding: 20px 24px; font-size: 15px; }
     .olives-inner { padding: 60px 24px; }
     .olives-grid { gap: 24px; }
-    .olive-card { padding: 28px; }
+    .olive-card-image { height: 180px; }
+    .olive-card-body { padding: 24px; }
     .sante-hero { min-height: 320px; }
     .sante-hero-content { padding: 60px 24px; }
 
@@ -1916,6 +1982,9 @@
       <p class="composition-tag">Valeurs nutritionnelles</p>
       <h2 class="composition-title">La composition</h2>
       <p class="composition-desc">L'huile d'olive est un trésor nutritionnel naturel. Riche en acides gras mono-insaturés, elle constitue la base du régime méditerranéen reconnu par l'UNESCO. Voici sa composition détaillée pour 100 ml.</p>
+      <div class="composition-image">
+        <img src="https://images.unsplash.com/photo-1474979266404-7571d10e3481?w=800&q=80" alt="Huile d'olive dorée">
+      </div>
     </div>
     <div class="nutri-table">
       <div class="nutri-table-header">Pour 100 ml</div>
@@ -1950,6 +2019,12 @@
     </div>
   </div>
 </section>
+
+<!-- IMAGE BIENFAITS -->
+<div class="bienfaits-image-banner reveal">
+  <img src="https://raw.githubusercontent.com/AudaciousAxe/daphne-oil-theme/claude/improve-about-page-style-YwOyC/assets/culture-paysage.webp" alt="Oliveraies grecques baignées de soleil">
+  <div class="banner-caption">L'olivier sacré, profondément enraciné dans la civilisation grecque depuis des millénaires.</div>
+</div>
 
 <!-- LES BIENFAITS -->
 <section class="bienfaits-section reveal">
@@ -2018,15 +2093,25 @@
     <div class="olives-grid">
       <div class="olive-card">
         <div class="olive-card-accent"></div>
-        <div class="olive-card-name">Koroneiki</div>
-        <span class="olive-card-badge">Huile d'olive</span>
-        <p class="olive-card-text">La variété Koroneiki est la variété la plus populaire en Grèce et représente 60 à 65 pour cent de la production totale du pays. L'arbre Koroneiki est robuste et résistant aux températures extrêmes, celui-ci donne la meilleure huile d'olive par rapport aux autres variétés. L'huile que nous produisons est issue de cette variété d'olive qui mûrit entre le début octobre jusqu'au mois de décembre.</p>
+        <div class="olive-card-image">
+          <img src="https://raw.githubusercontent.com/AudaciousAxe/daphne-oil-theme/claude/improve-about-page-style-YwOyC/a%20propos/apres%20recolte%20olive%20dans%20machine.webp" alt="Olives Koroneiki récoltées">
+        </div>
+        <div class="olive-card-body">
+          <div class="olive-card-name">Koroneiki</div>
+          <span class="olive-card-badge">Huile d'olive</span>
+          <p class="olive-card-text">La variété Koroneiki est la variété la plus populaire en Grèce et représente 60 à 65 pour cent de la production totale du pays. L'arbre Koroneiki est robuste et résistant aux températures extrêmes, celui-ci donne la meilleure huile d'olive par rapport aux autres variétés. L'huile que nous produisons est issue de cette variété d'olive qui mûrit entre le début octobre jusqu'au mois de décembre.</p>
+        </div>
       </div>
       <div class="olive-card">
         <div class="olive-card-accent"></div>
-        <div class="olive-card-name">Kalamon</div>
-        <span class="olive-card-badge">Olive de table</span>
-        <p class="olive-card-text">La variété Kalamon est une olive simple qui mûrit entre décembre et janvier. L'olive est récoltée lorsque sa couleur a viré intégralement vers le violet. L'arbre est résistant aux températures hivernales et sensible aux chaleurs estivales de la Grèce. Les olives de table que nous cultivons sont de cette variété et sont reconnues comme étant les plus célèbres au monde pour la dégustation de table !</p>
+        <div class="olive-card-image">
+          <img src="https://raw.githubusercontent.com/AudaciousAxe/daphne-oil-theme/claude/improve-about-page-style-YwOyC/a%20propos/Sac%20d%20olive%20sur%20le%20champs.webp" alt="Olives Kalamon dans l'oliveraie">
+        </div>
+        <div class="olive-card-body">
+          <div class="olive-card-name">Kalamon</div>
+          <span class="olive-card-badge">Olive de table</span>
+          <p class="olive-card-text">La variété Kalamon est une olive simple qui mûrit entre décembre et janvier. L'olive est récoltée lorsque sa couleur a viré intégralement vers le violet. L'arbre est résistant aux températures hivernales et sensible aux chaleurs estivales de la Grèce. Les olives de table que nous cultivons sont de cette variété et sont reconnues comme étant les plus célèbres au monde pour la dégustation de table !</p>
+        </div>
       </div>
     </div>
   </div>

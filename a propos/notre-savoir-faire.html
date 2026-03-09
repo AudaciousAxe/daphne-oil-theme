@@ -2,7 +2,8 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
 <title>Notre Savoir-Faire | Daphne Oil — De l'olivier à votre table</title>
 <meta name="description" content="Découvrez comment Daphne Oil produit son huile d'olive bio : récolte manuelle à Kalamata, pressage à froid le jour même, et conditionnement contrôlé.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -14,6 +15,7 @@
     --dark-subtle: #1e1e1e;
     --olive: #8b9a3a;
     --olive-light: #a8b84d;
+    --olive-dark: #6b7a2a;
     --olive-glow: rgba(139,154,58,0.12);
     --gold: #c4a95a;
     --cream: #f5f0e8;
@@ -26,7 +28,7 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
   body {
     font-family: var(--sans);
@@ -35,6 +37,8 @@
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
+
+  img { max-width: 100%; height: auto; }
 
   /* ─── NAV ─── */
   nav {
@@ -48,6 +52,7 @@
     justify-content: space-between;
     background: rgba(10,10,10,0.85);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255,255,255,0.05);
     transition: all 0.4s ease;
   }
@@ -132,12 +137,17 @@
     gap: 5px;
     cursor: pointer;
     z-index: 1001;
+    padding: 8px;
+    -webkit-tap-highlight-color: transparent;
   }
   .hamburger span {
     width: 24px; height: 2px;
     background: var(--cream);
     transition: all 0.3s;
   }
+  .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
   /* ─── HERO BANNER ─── */
   .page-hero {
@@ -159,7 +169,7 @@
     width: 100%; height: 100%;
     object-fit: cover;
     object-position: center 40%;
-    filter: brightness(0.55);
+    filter: brightness(0.45) contrast(1.1);
   }
 
   .page-hero-overlay {
@@ -186,7 +196,7 @@
     font-family: var(--sans);
     font-size: 12px;
     font-weight: 500;
-    letter-spacing: 4px;
+    letter-spacing: 5px;
     text-transform: uppercase;
     color: var(--olive-light);
     margin-bottom: 20px;
@@ -194,11 +204,11 @@
 
   .page-hero-title {
     font-family: var(--serif);
-    font-size: clamp(36px, 5vw, 58px);
+    font-size: clamp(40px, 6vw, 64px);
     font-weight: 300;
-    line-height: 1.15;
+    line-height: 1.1;
     color: var(--cream);
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
 
   .page-hero-title em {
@@ -207,7 +217,7 @@
   }
 
   .page-hero-desc {
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.7;
     color: var(--cream-dim);
     max-width: 560px;
@@ -219,16 +229,19 @@
     padding: 80px 40px;
     text-align: center;
     position: relative;
+    background: var(--dark);
+    border-top: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
   }
 
   .quote-section::before {
-    content: '"';
+    content: '\201C';
     font-family: var(--serif);
-    font-size: 120px;
+    font-size: 140px;
     color: var(--olive);
-    opacity: 0.15;
+    opacity: 0.2;
     position: absolute;
-    top: 20px;
+    top: 10px;
     left: 50%;
     transform: translateX(-50%);
     line-height: 1;
@@ -249,12 +262,38 @@
     font-size: 13px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--gray);
+    color: var(--olive-light);
   }
 
   /* ─── PROCESS STEPS ─── */
   .process-section {
-    padding: 0 0 120px;
+    padding: 0 0 0;
+  }
+
+  .process-header {
+    text-align: center;
+    padding: 100px 40px 60px;
+  }
+
+  .process-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--olive-light);
+    margin-bottom: 16px;
+  }
+
+  .process-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 300;
+    color: var(--cream);
+  }
+
+  .process-title em {
+    font-style: italic;
+    color: var(--olive-light);
   }
 
   .step {
@@ -265,6 +304,8 @@
     overflow: hidden;
   }
 
+  .step:nth-child(odd) .step-image { order: 1; }
+  .step:nth-child(odd) .step-content { order: 2; }
   .step:nth-child(even) .step-image { order: 2; }
   .step:nth-child(even) .step-content { order: 1; }
 
@@ -287,7 +328,7 @@
   .step-image-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(10,10,10,0.2), rgba(10,10,10,0.05));
+    background: linear-gradient(135deg, rgba(10,10,10,0.15), rgba(10,10,10,0.05));
     pointer-events: none;
   }
 
@@ -309,7 +350,7 @@
     font-size: 80px;
     font-weight: 300;
     color: var(--olive);
-    opacity: 0.15;
+    opacity: 0.2;
     position: absolute;
     top: 40px;
     right: 60px;
@@ -370,6 +411,43 @@
     font-weight: 400;
   }
 
+  /* ─── OLIVE BANNER (divider) ─── */
+  .olive-banner {
+    position: relative;
+    padding: 80px 60px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--olive-dark) 0%, var(--olive) 50%, var(--olive-light) 100%);
+    overflow: hidden;
+  }
+
+  .olive-banner-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .olive-banner h2 {
+    font-family: var(--serif);
+    font-size: clamp(24px, 3.5vw, 48px);
+    font-weight: 300;
+    color: var(--black);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .olive-banner h2 strong {
+    font-weight: 600;
+    display: block;
+    font-size: clamp(32px, 4.5vw, 64px);
+  }
+
+  .olive-banner p {
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(10,10,10,0.55);
+    margin-top: 12px;
+  }
+
   /* ─── FONDATEUR SECTION ─── */
   .fondateur {
     padding: 120px 80px;
@@ -403,15 +481,31 @@
     object-fit: cover;
     object-position: center top;
     filter: brightness(0.95);
+    transition: transform 0.6s ease;
+  }
+
+  .fondateur-image:hover img {
+    transform: scale(1.03);
   }
 
   .fondateur-image::after {
     content: '';
     position: absolute;
     inset: 0;
-    border: 1px solid rgba(139,154,58,0.2);
+    border: 1px solid rgba(139,154,58,0.3);
     border-radius: 12px;
     pointer-events: none;
+  }
+
+  .fondateur-image-accent {
+    position: absolute;
+    bottom: -12px;
+    right: -12px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(139,154,58,0.15);
+    border-radius: 12px;
+    z-index: -1;
   }
 
   .fondateur-content {
@@ -469,20 +563,17 @@
   }
 
   /* ─── GALLERY MOSAIC ─── */
+  .gallery-section {
+    background: var(--dark);
+    border-top: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
   .gallery {
-    padding: 80px 40px 120px;
+    padding: 100px 40px 120px;
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-  }
-
-  .gallery::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 80px; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--olive), transparent);
   }
 
   .gallery-header {
@@ -493,7 +584,7 @@
   .gallery-tag {
     font-size: 11px;
     font-weight: 500;
-    letter-spacing: 4px;
+    letter-spacing: 5px;
     text-transform: uppercase;
     color: var(--olive-light);
     margin-bottom: 16px;
@@ -645,7 +736,7 @@
   .format-badge {
     padding: 10px 20px;
     background: var(--dark-card);
-    border: 1px solid rgba(139,154,58,0.2);
+    border: 1px solid rgba(139,154,58,0.25);
     border-radius: 50px;
     font-size: 13px;
     font-weight: 400;
@@ -657,6 +748,7 @@
   .format-badge:hover {
     border-color: var(--olive);
     background: var(--olive-glow);
+    transform: translateY(-1px);
   }
 
   .conditionnement-visual {
@@ -668,18 +760,19 @@
 
   .cond-card {
     background: var(--dark-card);
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid rgba(139,154,58,0.1);
     border-radius: 12px;
     padding: 32px;
     display: flex;
     align-items: center;
     gap: 24px;
-    transition: all 0.3s;
+    transition: all 0.4s;
   }
 
   .cond-card:hover {
-    border-color: rgba(139,154,58,0.3);
-    transform: translateY(-2px);
+    border-color: rgba(139,154,58,0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(139,154,58,0.08);
   }
 
   .cond-icon {
@@ -717,19 +810,9 @@
   .cta-band {
     padding: 100px 40px;
     text-align: center;
-    background: var(--dark);
+    background: linear-gradient(135deg, var(--olive-dark) 0%, var(--olive) 50%, var(--olive-light) 100%);
     position: relative;
     overflow: hidden;
-  }
-
-  .cta-band::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, var(--olive-glow), transparent 70%);
-    transform: translate(-50%, -50%);
-    pointer-events: none;
   }
 
   .cta-tag {
@@ -737,7 +820,8 @@
     font-weight: 500;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--olive-light);
+    color: var(--black);
+    opacity: 0.6;
     margin-bottom: 20px;
     position: relative;
   }
@@ -747,7 +831,7 @@
     font-size: clamp(28px, 4vw, 44px);
     font-weight: 300;
     line-height: 1.2;
-    color: var(--cream);
+    color: var(--black);
     margin-bottom: 16px;
     position: relative;
   }
@@ -755,7 +839,7 @@
   .cta-text {
     font-size: 15px;
     line-height: 1.7;
-    color: var(--cream-dim);
+    color: rgba(10,10,10,0.6);
     max-width: 500px;
     margin: 0 auto 32px;
     position: relative;
@@ -766,27 +850,29 @@
     align-items: center;
     gap: 10px;
     padding: 16px 40px;
-    background: linear-gradient(135deg, var(--olive), var(--olive-light));
-    color: var(--black);
+    background: var(--black);
+    color: var(--cream);
     text-decoration: none;
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    border-radius: 50px;
+    border-radius: 0;
     position: relative;
     transition: all 0.4s;
   }
 
   .cta-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(139,154,58,0.3);
+    background: var(--dark);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   }
 
   /* ─── FOOTER ─── */
   footer {
     padding: 80px 60px 30px;
     border-top: 1px solid rgba(255,255,255,0.06);
+    background: var(--dark);
   }
 
   .footer-top {
@@ -890,6 +976,7 @@
     letter-spacing: 3px;
     text-transform: uppercase;
     transition: color 0.3s;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .mobile-menu a:hover { color: var(--olive-light); }
@@ -901,9 +988,13 @@
     .hamburger { display: flex; }
     .mobile-menu { display: flex; }
 
+    .process-header { padding: 80px 30px 40px; }
+
     .step { grid-template-columns: 1fr; min-height: auto; }
     .step-image { height: 350px; }
+    .step:nth-child(odd) .step-image,
     .step:nth-child(even) .step-image { order: 0; }
+    .step:nth-child(odd) .step-content,
     .step:nth-child(even) .step-content { order: 0; }
     .step-content { padding: 60px 40px; }
     .step-number { font-size: 60px; top: 20px; right: 30px; }
@@ -933,8 +1024,12 @@
 
     .quote-section { padding: 60px 24px; }
 
+    .process-header { padding: 60px 24px 30px; }
+
     .step-content { padding: 48px 24px; }
     .step-image { height: 280px; }
+
+    .olive-banner { padding: 60px 24px; }
 
     .fondateur { padding: 60px 24px; }
     .fondateur-image { max-width: 100%; aspect-ratio: 4/3; }
@@ -996,7 +1091,7 @@
 <!-- PAGE HERO -->
 <section class="page-hero">
   <div class="page-hero-bg">
-    <img src="images/Sac_d_olive_sur_le_champs.webp" alt="Oliveraie familiale à Kalamata">
+    <img src="../assets/olive-main-paysage.webp" alt="Oliveraie familiale à Kalamata">
   </div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content">
@@ -1015,10 +1110,15 @@
 <!-- PROCESS STEPS -->
 <section class="process-section">
 
+  <div class="process-header reveal">
+    <p class="process-tag">Notre processus</p>
+    <h2 class="process-title">De la récolte au <em>conditionnement</em></h2>
+  </div>
+
   <!-- ÉTAPE 1 — LA RÉCOLTE -->
   <div class="step reveal">
     <div class="step-image">
-      <img src="images/Sacs_de_olives_preview.webp" alt="Sacs d'olives prêts pour le pressoir">
+      <img src="Sacs de olives preview.webp" alt="Sacs d'olives prêts pour le pressoir">
       <div class="step-image-overlay"></div>
     </div>
     <div class="step-content">
@@ -1035,7 +1135,7 @@
   <!-- ÉTAPE 2 — LE PRESSAGE -->
   <div class="step reveal">
     <div class="step-image">
-      <img src="images/Olives_tombant_dans_la_machine.webp" alt="Olives entrant dans le pressoir">
+      <img src="Olives tombant dans la machine.webp" alt="Olives entrant dans le pressoir">
       <div class="step-image-overlay"></div>
     </div>
     <div class="step-content">
@@ -1049,10 +1149,10 @@
     </div>
   </div>
 
-  <!-- ÉTAPE 3 — LE TRI ET NETTOYAGE -->
+  <!-- ÉTAPE 3 — LE CONDITIONNEMENT -->
   <div class="step reveal">
     <div class="step-image">
-      <img src="images/apres_recolte_olive_dans_machine.webp" alt="Olives versées dans la machine de tri">
+      <img src="apres recolte olive dans machine.webp" alt="Olives versées dans la machine de tri">
       <div class="step-image-overlay"></div>
     </div>
     <div class="step-content">
@@ -1068,10 +1168,19 @@
 
 </section>
 
+<!-- OLIVE BANNER -->
+<section class="olive-banner reveal">
+  <div class="olive-banner-content">
+    <h2>Depuis les oliveraies de <strong>Kalamata</strong></h2>
+    <p>Exploitation familiale depuis 1854</p>
+  </div>
+</section>
+
 <!-- FONDATEUR -->
 <section class="fondateur reveal">
   <div class="fondateur-image">
-    <img src="images/Evangelos_fondateur_.webp" alt="Evangelos Kaskaris, fondateur de Daphne Oil">
+    <img src="../assets/evangelos-stand.webp" alt="Evangelos Kaskaris, fondateur de Daphne Oil">
+    <div class="fondateur-image-accent"></div>
   </div>
   <div class="fondateur-content">
     <p class="fondateur-tag">Le fondateur</p>
@@ -1085,6 +1194,7 @@
 </section>
 
 <!-- GALERIE -->
+<div class="gallery-section">
 <section class="gallery reveal">
   <div class="gallery-header">
     <p class="gallery-tag">En images</p>
@@ -1092,23 +1202,24 @@
   </div>
   <div class="gallery-grid">
     <div class="gallery-item">
-      <img src="images/Sac_d_olive_sur_le_champs.webp" alt="Sacs d'olives dans l'oliveraie">
+      <img src="Sac d olive sur le champs.webp" alt="Sacs d'olives dans l'oliveraie">
       <div class="gallery-item-caption"><span>Nos oliveraies à Asprochoma</span></div>
     </div>
     <div class="gallery-item">
-      <img src="images/Sacs_de_olives_preview.webp" alt="Sacs d'olives sur palettes">
-      <div class="gallery-item-caption"><span>Prêtes pour le pressoir</span></div>
+      <img src="../assets/grand mère récolte.webp" alt="La récolte en famille">
+      <div class="gallery-item-caption"><span>La récolte en famille</span></div>
     </div>
     <div class="gallery-item">
-      <img src="images/Olives_tombant_dans_la_machine.webp" alt="Olives dans la machine">
+      <img src="Olives tombant dans la machine.webp" alt="Olives dans la machine">
       <div class="gallery-item-caption"><span>Le tri et le nettoyage</span></div>
     </div>
     <div class="gallery-item">
-      <img src="images/apres_recolte_olive_dans_machine.webp" alt="Après récolte">
-      <div class="gallery-item-caption"><span>Chargement au pressoir</span></div>
+      <img src="../assets/culture-paysage.webp" alt="Culture des oliviers">
+      <div class="gallery-item-caption"><span>Nos oliviers centenaires</span></div>
     </div>
   </div>
 </section>
+</div>
 
 <!-- CONDITIONNEMENT DÉTAILS -->
 <section class="conditionnement reveal">
@@ -1197,7 +1308,7 @@
     </div>
   </div>
   <div class="ft-bottom">
-    <span>© 2026 Daphne Oil · Kalamata, Grèce</span>
+    <span>&copy; 2026 Daphne Oil &middot; Kalamata, Grèce</span>
     <div>
       <a href="#">CGV</a>
       <a href="#">Vie privée</a>

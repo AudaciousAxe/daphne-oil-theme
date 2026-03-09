@@ -152,11 +152,11 @@
   /* ─── HERO BANNER ─── */
   .page-hero {
     position: relative;
-    height: 70vh;
-    min-height: 500px;
+    height: 80vh;
+    min-height: 550px;
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;
     overflow: hidden;
   }
 
@@ -169,27 +169,33 @@
     width: 100%; height: 100%;
     object-fit: cover;
     object-position: center 40%;
-    filter: brightness(0.45) contrast(1.1);
+    filter: brightness(0.4) contrast(1.1);
   }
 
   .page-hero-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(
-      to bottom,
-      rgba(10,10,10,0.3) 0%,
-      rgba(10,10,10,0.1) 40%,
-      rgba(10,10,10,0.7) 80%,
-      rgba(10,10,10,1) 100%
+      to right,
+      rgba(10,10,10,0.8) 0%,
+      rgba(10,10,10,0.4) 50%,
+      rgba(10,10,10,0.2) 100%
     );
+  }
+
+  .page-hero-overlay::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, var(--black));
   }
 
   .page-hero-content {
     position: relative;
     z-index: 2;
-    text-align: center;
-    padding: 0 40px 80px;
-    max-width: 800px;
+    padding: 0 80px;
+    max-width: 700px;
   }
 
   .page-hero-tag {
@@ -204,7 +210,7 @@
 
   .page-hero-title {
     font-family: var(--serif);
-    font-size: clamp(40px, 6vw, 64px);
+    font-size: clamp(42px, 6vw, 72px);
     font-weight: 300;
     line-height: 1.1;
     color: var(--cream);
@@ -220,8 +226,115 @@
     font-size: 17px;
     line-height: 1.7;
     color: var(--cream-dim);
-    max-width: 560px;
+    max-width: 520px;
+    margin-bottom: 32px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, var(--olive), var(--olive-light));
+    color: var(--black);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.4s;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(139,154,58,0.3);
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: transparent;
+    border: 1px solid rgba(245,240,232,0.3);
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.4s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--cream);
+    background: rgba(255,255,255,0.05);
+    transform: translateY(-2px);
+  }
+
+  /* ─── FEATURES BAR ─── */
+  .features-bar {
+    padding: 60px 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    max-width: 1100px;
     margin: 0 auto;
+    text-align: center;
+  }
+
+  .feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .feature-icon {
+    width: 52px;
+    height: 52px;
+    border: 1px solid rgba(139,154,58,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+  }
+
+  .feature-item:hover .feature-icon {
+    border-color: var(--olive-light);
+    background: var(--olive-glow);
+  }
+
+  .feature-icon svg {
+    width: 22px; height: 22px;
+    stroke: var(--olive-light);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .feature-label {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--cream);
+  }
+
+  .feature-desc {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--gray);
+    max-width: 200px;
   }
 
   /* ─── CITATION INTRO ─── */
@@ -267,7 +380,7 @@
 
   /* ─── PROCESS STEPS ─── */
   .process-section {
-    padding: 0 0 0;
+    padding: 0;
   }
 
   .process-header {
@@ -336,7 +449,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 80px 80px;
+    padding: 80px;
     background: var(--dark);
     position: relative;
   }
@@ -411,44 +524,102 @@
     font-weight: 400;
   }
 
-  /* ─── OLIVE BANNER (divider) ─── */
-  .olive-banner {
+  /* ─── TERROIR (full-width image section) ─── */
+  .terroir-section {
     position: relative;
-    padding: 80px 60px;
-    text-align: center;
-    background: linear-gradient(135deg, var(--olive-dark) 0%, var(--olive) 50%, var(--olive-light) 100%);
+    min-height: 500px;
+    display: flex;
+    align-items: center;
     overflow: hidden;
   }
 
-  .olive-banner-content {
+  .terroir-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .terroir-bg img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(0.45) contrast(1.1);
+  }
+
+  .terroir-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(10,10,10,0.85) 0%,
+      rgba(10,10,10,0.5) 50%,
+      rgba(10,10,10,0.2) 100%
+    );
+  }
+
+  .terroir-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    padding: 80px;
+    max-width: 600px;
   }
 
-  .olive-banner h2 {
-    font-family: var(--serif);
-    font-size: clamp(24px, 3.5vw, 48px);
-    font-weight: 300;
-    color: var(--black);
-    line-height: 1.2;
-    margin-bottom: 8px;
-  }
-
-  .olive-banner h2 strong {
-    font-weight: 600;
-    display: block;
-    font-size: clamp(32px, 4.5vw, 64px);
-  }
-
-  .olive-banner p {
-    font-size: 14px;
-    letter-spacing: 3px;
+  .terroir-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 5px;
     text-transform: uppercase;
-    color: rgba(10,10,10,0.55);
-    margin-top: 12px;
+    color: var(--olive-light);
+    margin-bottom: 16px;
+  }
+
+  .terroir-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--cream);
+    margin-bottom: 20px;
+  }
+
+  .terroir-title em {
+    font-style: italic;
+    color: var(--olive-light);
+  }
+
+  .terroir-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--cream-dim);
+    margin-bottom: 28px;
+  }
+
+  .terroir-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    border: 1px solid var(--olive);
+    color: var(--olive-light);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.4s;
+  }
+
+  .terroir-btn:hover {
+    background: var(--olive);
+    color: var(--black);
+    transform: translateY(-2px);
   }
 
   /* ─── FONDATEUR SECTION ─── */
+  .fondateur-section {
+    background: var(--dark);
+    border-top: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
   .fondateur {
     padding: 120px 80px;
     display: grid;
@@ -460,18 +631,9 @@
     position: relative;
   }
 
-  .fondateur::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 80px; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--olive), transparent);
-  }
-
   .fondateur-image {
     position: relative;
-    border-radius: 12px;
+    border-radius: 0;
     overflow: hidden;
     aspect-ratio: 3/4;
   }
@@ -480,7 +642,7 @@
     width: 100%; height: 100%;
     object-fit: cover;
     object-position: center top;
-    filter: brightness(0.95);
+    filter: brightness(0.9) contrast(1.05);
     transition: transform 0.6s ease;
   }
 
@@ -488,23 +650,13 @@
     transform: scale(1.03);
   }
 
-  .fondateur-image::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border: 1px solid rgba(139,154,58,0.3);
-    border-radius: 12px;
-    pointer-events: none;
-  }
-
   .fondateur-image-accent {
     position: absolute;
-    bottom: -12px;
-    right: -12px;
+    bottom: -10px;
+    right: -10px;
     width: 100%;
     height: 100%;
-    border: 1px solid rgba(139,154,58,0.15);
-    border-radius: 12px;
+    border: 1px solid var(--olive);
     z-index: -1;
   }
 
@@ -562,18 +714,51 @@
     margin-top: 8px;
   }
 
-  /* ─── GALLERY MOSAIC ─── */
-  .gallery-section {
-    background: var(--dark);
-    border-top: 1px solid rgba(255,255,255,0.04);
-    border-bottom: 1px solid rgba(255,255,255,0.04);
+  /* ─── STATS ─── */
+  .fondateur-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 12px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
   }
 
+  .stat {
+    text-align: left;
+  }
+
+  .stat-number {
+    font-family: var(--serif);
+    font-size: 40px;
+    font-weight: 300;
+    color: var(--olive-light);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  /* ─── GALLERY MOSAIC ─── */
   .gallery {
     padding: 100px 40px 120px;
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
+  }
+
+  .gallery::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 80px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--olive), transparent);
   }
 
   .gallery-header {
@@ -605,7 +790,7 @@
   }
 
   .gallery-item {
-    border-radius: 8px;
+    border-radius: 0;
     overflow: hidden;
     position: relative;
     cursor: pointer;
@@ -737,7 +922,7 @@
     padding: 10px 20px;
     background: var(--dark-card);
     border: 1px solid rgba(139,154,58,0.25);
-    border-radius: 50px;
+    border-radius: 0;
     font-size: 13px;
     font-weight: 400;
     color: var(--cream);
@@ -761,8 +946,8 @@
   .cond-card {
     background: var(--dark-card);
     border: 1px solid rgba(139,154,58,0.1);
-    border-radius: 12px;
-    padding: 32px;
+    border-radius: 0;
+    padding: 28px 32px;
     display: flex;
     align-items: center;
     gap: 24px;
@@ -777,16 +962,16 @@
 
   .cond-icon {
     flex-shrink: 0;
-    width: 56px; height: 56px;
-    border-radius: 12px;
-    background: var(--olive-glow);
+    width: 52px; height: 52px;
+    border: 1px solid rgba(139,154,58,0.3);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .cond-icon svg {
-    width: 24px; height: 24px;
+    width: 22px; height: 22px;
     stroke: var(--olive-light);
     fill: none;
     stroke-width: 1.5;
@@ -808,7 +993,7 @@
 
   /* ─── CTA SECTION ─── */
   .cta-band {
-    padding: 100px 40px;
+    padding: 80px 40px;
     text-align: center;
     background: linear-gradient(135deg, var(--olive-dark) 0%, var(--olive) 50%, var(--olive-light) 100%);
     position: relative;
@@ -822,7 +1007,7 @@
     text-transform: uppercase;
     color: var(--black);
     opacity: 0.6;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     position: relative;
   }
 
@@ -832,16 +1017,7 @@
     font-weight: 300;
     line-height: 1.2;
     color: var(--black);
-    margin-bottom: 16px;
-    position: relative;
-  }
-
-  .cta-text {
-    font-size: 15px;
-    line-height: 1.7;
-    color: rgba(10,10,10,0.6);
-    max-width: 500px;
-    margin: 0 auto 32px;
+    margin-bottom: 28px;
     position: relative;
   }
 
@@ -857,7 +1033,6 @@
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    border-radius: 0;
     position: relative;
     transition: all 0.4s;
   }
@@ -988,6 +1163,10 @@
     .hamburger { display: flex; }
     .mobile-menu { display: flex; }
 
+    .page-hero-content { padding: 0 40px; }
+
+    .features-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+
     .process-header { padding: 80px 30px 40px; }
 
     .step { grid-template-columns: 1fr; min-height: auto; }
@@ -999,6 +1178,8 @@
     .step-content { padding: 60px 40px; }
     .step-number { font-size: 60px; top: 20px; right: 30px; }
     .step:nth-child(even) .step-number { left: 30px; }
+
+    .terroir-content { padding: 60px 40px; }
 
     .fondateur { grid-template-columns: 1fr; padding: 80px 40px; gap: 40px; }
     .fondateur-image { max-width: 360px; margin: 0 auto; }
@@ -1019,8 +1200,15 @@
   }
 
   @media (max-width: 768px) {
-    .page-hero { height: 60vh; min-height: 400px; }
-    .page-hero-content { padding: 0 24px 60px; }
+    .page-hero { height: 70vh; min-height: 450px; }
+    .page-hero-content { padding: 0 24px; }
+    .page-hero-title { font-size: clamp(36px, 8vw, 52px); }
+    .hero-buttons { flex-direction: column; }
+    .hero-buttons a { text-align: center; justify-content: center; }
+
+    .features-bar { padding: 40px 24px; }
+    .features-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .feature-desc { display: none; }
 
     .quote-section { padding: 60px 24px; }
 
@@ -1029,10 +1217,13 @@
     .step-content { padding: 48px 24px; }
     .step-image { height: 280px; }
 
-    .olive-banner { padding: 60px 24px; }
+    .terroir-section { min-height: 400px; }
+    .terroir-content { padding: 40px 24px; }
 
     .fondateur { padding: 60px 24px; }
     .fondateur-image { max-width: 100%; aspect-ratio: 4/3; }
+    .fondateur-stats { gap: 24px; }
+    .stat-number { font-size: 32px; }
 
     .gallery { padding: 60px 24px 80px; }
     .gallery-grid {
@@ -1098,6 +1289,44 @@
     <p class="page-hero-tag">De l'olivier à votre cuisine</p>
     <h1 class="page-hero-title">Notre <em>savoir-faire</em></h1>
     <p class="page-hero-desc">Tout en respectant les traditions millénaires, nous maîtrisons chaque étape de la production pour vous offrir une huile d'olive d'exception.</p>
+    <div class="hero-buttons">
+      <a href="#process" class="btn-primary">Découvrir le processus</a>
+      <a href="#fondateur" class="btn-outline">Notre histoire</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES BAR -->
+<section class="features-bar reveal">
+  <div class="features-grid">
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 12l3 3 5-5"/></svg>
+      </div>
+      <span class="feature-label">Récolte manuelle</span>
+      <span class="feature-desc">Cueillette à la main dans nos oliveraies de Kalamata</span>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <span class="feature-label">Pressage à froid</span>
+      <span class="feature-desc">Extraction le jour même pour une qualité maximale</span>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      </div>
+      <span class="feature-label">100% Bio</span>
+      <span class="feature-desc">Certifié biologique par Certisys chaque année</span>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <span class="feature-label">Familial</span>
+      <span class="feature-desc">Exploitation transmise de génération en génération</span>
+    </div>
   </div>
 </section>
 
@@ -1108,7 +1337,7 @@
 </section>
 
 <!-- PROCESS STEPS -->
-<section class="process-section">
+<section class="process-section" id="process">
 
   <div class="process-header reveal">
     <p class="process-tag">Notre processus</p>
@@ -1168,15 +1397,22 @@
 
 </section>
 
-<!-- OLIVE BANNER -->
-<section class="olive-banner reveal">
-  <div class="olive-banner-content">
-    <h2>Depuis les oliveraies de <strong>Kalamata</strong></h2>
-    <p>Exploitation familiale depuis 1854</p>
+<!-- TERROIR SECTION -->
+<section class="terroir-section reveal">
+  <div class="terroir-bg">
+    <img src="../assets/culture-paysage.webp" alt="Oliveraies du Péloponnèse">
+  </div>
+  <div class="terroir-overlay"></div>
+  <div class="terroir-content">
+    <p class="terroir-tag">Le terroir</p>
+    <h2 class="terroir-title">Le Péloponnèse, berceau de <em>l'olivier</em></h2>
+    <p class="terroir-text">Nous sommes une petite exploitation familiale d'huile d'olive extra vierge biologique située dans le village d'Asprochoma et Lakia. Daphne Oil met son expérience et son savoir-faire dans la culture des olives afin de vous offrir des produits d'exception.</p>
+    <a href="#" class="terroir-btn">Découvrir la culture</a>
   </div>
 </section>
 
 <!-- FONDATEUR -->
+<div class="fondateur-section" id="fondateur">
 <section class="fondateur reveal">
   <div class="fondateur-image">
     <img src="../assets/evangelos-stand.webp" alt="Evangelos Kaskaris, fondateur de Daphne Oil">
@@ -1190,11 +1426,25 @@
     <blockquote class="fondateur-quote">
       Nous provenons à 100% de Kalamata, en Grèce.
     </blockquote>
+    <div class="fondateur-stats">
+      <div class="stat">
+        <div class="stat-number">1854</div>
+        <div class="stat-label">Année de fondation</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">170+</div>
+        <div class="stat-label">Ans d'expérience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Péloponnèse</div>
+      </div>
+    </div>
   </div>
 </section>
+</div>
 
 <!-- GALERIE -->
-<div class="gallery-section">
 <section class="gallery reveal">
   <div class="gallery-header">
     <p class="gallery-tag">En images</p>
@@ -1214,12 +1464,11 @@
       <div class="gallery-item-caption"><span>Le tri et le nettoyage</span></div>
     </div>
     <div class="gallery-item">
-      <img src="../assets/culture-paysage.webp" alt="Culture des oliviers">
-      <div class="gallery-item-caption"><span>Nos oliviers centenaires</span></div>
+      <img src="Evangelos fondateur .webp" alt="Evangelos dans les oliveraies">
+      <div class="gallery-item-caption"><span>Evangelos dans les champs</span></div>
     </div>
   </div>
 </section>
-</div>
 
 <!-- CONDITIONNEMENT DÉTAILS -->
 <section class="conditionnement reveal">
@@ -1270,11 +1519,10 @@
 
 <!-- CTA -->
 <section class="cta-band reveal">
-  <p class="cta-tag">Goûtez la différence</p>
-  <h2 class="cta-title">Prêt à découvrir nos produits ?</h2>
-  <p class="cta-text">Huile d'olive bio extra vierge, olives de Kalamata, aromatiques... Découvrez toute la gamme Daphne Oil.</p>
+  <p class="cta-tag">Nos produits sont aussi en magasin bio</p>
+  <h2 class="cta-title">Trouvez un point de vente<br>proche de chez vous</h2>
   <a href="#" class="cta-btn">
-    Voir nos produits
+    Trouver un point de vente
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
   </a>
 </section>
@@ -1287,16 +1535,17 @@
       <p>Huile d'olive bio extra vierge de Kalamata. Exploitation familiale depuis 1854.</p>
     </div>
     <div class="ft-col">
-      <h5>Produits</h5>
-      <a href="#">Huile d'olive bio</a>
-      <a href="#">Huiles aromatiques</a>
+      <h5>Boutique</h5>
+      <a href="#">Huile d'olive</a>
       <a href="#">Olives</a>
-      <a href="#">Coffrets cadeaux</a>
+      <a href="#">Miel</a>
+      <a href="#">Confitures</a>
+      <a href="#">Figues séchées</a>
     </div>
     <div class="ft-col">
       <h5>Daphne</h5>
-      <a href="#">Notre histoire</a>
-      <a href="#">Savoir-faire</a>
+      <a href="#">À propos</a>
+      <a href="#">Notre culture</a>
       <a href="#">Blog</a>
       <a href="#">Contact</a>
     </div>
@@ -1304,11 +1553,12 @@
       <h5>Informations</h5>
       <a href="#">Points de vente</a>
       <a href="#">Livraison</a>
-      <a href="#">FAQ</a>
+      <a href="#">CGV</a>
+      <a href="#">Vie privée</a>
     </div>
   </div>
   <div class="ft-bottom">
-    <span>&copy; 2026 Daphne Oil &middot; Kalamata, Grèce</span>
+    <span>&copy; 2026 Daphne Oil. Tous droits réservés.</span>
     <div>
       <a href="#">CGV</a>
       <a href="#">Vie privée</a>
